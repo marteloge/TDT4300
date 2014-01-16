@@ -218,6 +218,183 @@
 
 
 \section{Data Preprocessing}
+	
+	\subsection*{Aggregation}
+		\begin{itemize}
+			\item Sometimes {\bf "less is more"} and this is the case with aggregation, 
+			the combining of two or more objects into a single object. 
+			\item {\bf Motivations for aggregation:}
+				\begin{enumerate}
+					\item The smaller the data sets resulting from data reduction
+					require {\bf less memory and processing time}.
+					\item aggregation may permit the use of {\bf expensive data mining 
+					algorithms}
+					\item Aggregation can act as a change of scope or scale by providing a
+					high-level view of the data instead of a low-level view. 
+					\item The behaviour of groups of objects or attributes is often {\bf more
+					stable} than that of individual objects or attributes. 
+				\end{enumerate}
+			\item A {\bf disadvantage} of aggregation is the potential loss of interesting details. 
+			An a store example aggregating over monthhs loses information about which day of the
+			week has the highest sales. 
+		\end{itemize}
+
+	\subsection*{Sampling}
+		\begin{itemize}
+			\item {\bf Sampling} is a commonly used approach for selecting a subset of the data 
+			objects to be analyzed. To analyze a full data set if often too expensive or 
+			time consuming. 
+			\item The key principle for effective sampling is the following: Using a sample
+			will work almost as well as using the entire data set if the sample is 
+			representative.
+			\item {\bf A sample is representative if} it has approximately the same property 
+			(of interest) as the original set of data. If the mean (average) of the data
+			objects is the property of interest, then a sample is representative if it has
+			a mean that is close to that of the original data. 
+			\item {\bf Sampling approaches:}
+				\begin{itemize}
+					\item {\bf Simple random sampling: } for this type of sampling there is 
+					an equal probability of selecting any particular item. There are two 
+					variations on random sampling
+						\begin{enumerate}
+							\item {\bf Sampling without replacement:} as each item is selected, it is
+							removed from the set of all objects that together constitute the
+							population. 
+							\item {\bf Sampling with replacement:} objects are not removed from 
+							the population as they are selected for the sample. 
+						\end{enumerate}
+					{\bf Pros and cons with random sampling:}  
+					(1) Sampling with replacement are is simpler to analyze since the probability 
+					of selecting any object remains constant during the sampling process. 
+					(2) When the population consists of different types of objects, with widely
+					different numbers of objects, simple random sampling can fail to adequately
+					represent those types of objects that are less frequent. This can cause
+					problems when the analysis require proper representation of all object types.
+					\item {\bf Stratified sampling:} starts with prespecified groups of objects.
+						\begin{enumerate}
+							\item In the simplest version, equal numbers of objects are drawn from 
+							each group even though the groups are of different sizes. 
+							\item In an other variation, the number of objects drawn from each group 
+							is proportional to the size of that group. 
+						\end{enumerate} 
+					\item {\bf Adaptive and progressive sampling:} The proper sampling size
+					can sometimes be difficult to determine. These approaches starts with a 
+					small sample, and then increase the sample size until a sample of sufficient
+					size has been obtained. While this technique eliminates the need to determine
+					the correct sample size initially, it requires that there be a way to evaluate
+					the sample to judge if it is large enough.
+				\end{itemize}			
+		\end{itemize}
+
+	\subsection*{Dimensionality reduction}
+		\begin{itemize}
+			\item Example of data sets with a high dimentionality is a object with many
+			attributes like a document object where each word in the document is an 
+			attribute. 
+			\item There is a varity of benefits to dimensionality reduction. A key benefit 
+			is that many data mining algoithms work better if the dimensionality - 
+			the number of attributes in the data - is lower. This is partly because 
+			dimensionality reduction can eliminate irrelevant features and reduce noise and
+			partly because of the curse of dimensionality.
+			\item Another benefit is that a reduction of dimensionality can lead to a more
+			understandable model because the model may involve fewer attributes.
+			\item Dimensionality reduction may allow the data to be more easily visualzed.
+			\item The amount of time and memory required by the data mining algorithm is reduced 
+			with a reduction in dimensionality. 
+			\item The term dimensionality reduction is often reserved for those techniques
+			that reduce the dimensionality of a data set by creating new attributes that
+			are a combination of the old attributes. 
+			\item {\bf The curse of dimensionality:} the curse of dimensionality refers
+			to the phenomen that many types of data analysis become significantly harder
+			as the dimensionality of the data increases. 
+			\item {\bf Linear alegebra techniques for dimensionality reduction:} some
+			of the most common approaches for dimensionality reduction, poarticulary for
+			continous data, use techniques from linear algebra to project the data from a 
+			high-dimensional space into a lower-dimensional space. 
+				\begin{itemize}
+					\item {\bf Principal Components Analysis (PCA):} is a linear algebra technique 
+					for continuous attributes that finds new attributes (principal components)
+					that (1) are linear combinations of the original attributes, 
+					(2) are orthogonal to each other, and (3) capture the maximum amount of 
+					variation in the data. 
+					\item {\bf Singular value decomposition (SVD): } is a linear algebra
+					technique that is related to PCA and is also commonly used for
+					dimensionality reduction.
+				\end{itemize}
+		\end{itemize}
+
+	\clearpage
+	\subsection*{Feature subset selection}
+		\begin{itemize}
+			\item A way to reduce the dimensionality is to use only a subset of the 
+			features.
+			\item {\bf Redundant and irrelevant features:} redundant features duplicate much 
+			or all of the information contained in one or more other attributes. Irrelevant
+			features contain almost no useful information for the data mining task at hand
+			(feks ID number will not be relevant if we want to predict students grade).
+			\item {\bf Approaches for feature selection:}
+				\begin{itemize}
+					\item {\bf Embedded approaches:} feature selection occurs naturally as
+					a part of the data mining algorithm.
+					\item {\bf Filter approaches:} features are selected before the data
+					mining algorithm is run, using some approach that is independent of the
+					data mining task. 
+					\item {\bf Wrapper approaches:} these methods use the target data mining
+					algorithm as a black box to find the best subset of attributes, in a way
+					similar to that of the ideal algorithm described above, but typically 
+					without enumerating all possible subsets. 
+				\end{itemize}
+			\item{\bf An architecture for feature subset selection:} 
+			a measure for evaluating a subset, a search strategy that controls the generation 
+			of a new subset of features, a stopping criterion, and a validation procedure.
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.2]{pics/featureSelection.png}
+				\end{figure} 
+			\item{\bf Feature Wighting:} is an alternative to keeping or eliminate features.
+			More important features are assigned a higher weight, while less important
+			features are given a lower weight. 
+		\end{itemize}
+
+	\subsection*{Feature creation}
+		\begin{itemize}
+			\item It is frequently possible to create, from the original attributes, a new set
+			of attributes that captures the important information in a data set much more
+			effectively. 
+			\item {\bf Feature extraction:} the creation of a new set of features from the 
+			original raw data. 
+			\item {\bf Mapping the data to a new space:} 
+			\item {\bf Feature Construction: } sometimes the features in the original data sets have
+			the necssary information, but is not in a form suitable for the data mining algorithm.
+			In this situation, one or more new features constructed out of the original features can
+			can be more useful than the original features. 
+		\end{itemize}
+
+	\subsection*{Discretization and binarization}
+		\begin{itemize}
+			\item Some data mining algorithms, especially certain classification algorithms, 
+			require that the data be in the form of categorical attributes. 
+			\item {\bf Discretization:} It is often necessary to transform a continuous attribute into a categorical attribute.
+			\item {\bf Binarizaation:} both continuous and discrete attributes may need to be 
+			transformed into one or more binary attributes.
+			\item If a categorical attribute has a large numer of values (categories), or some
+			values occur infrequently, then it may be beneficial for certain data mining tasks
+			to reduce the number of categories by combining some of the values. 
+		\end{itemize}
+
+	\subsection*{Variable transformation}
+		\begin{itemize}
+			\item A {\bf variable transformation} refers to a transformation that is applied to
+			all the values of a variable. 
+			\item{\bf Types of variable transformations:}
+				\begin{itemize}
+					\item{\bf Simple functions:} for this type of variable transformation, a 
+					simple mathematical function is applied to each value individually. 
+					\item{\bf Normalization and standardization:} the goal of standardization 
+					or normalization is to make an entire set of values have a particular 
+					property. 
+				\end{itemize}
+		\end{itemize}
 
 \section{Measures of Similarity and Dissimilarity}
 
