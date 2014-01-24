@@ -396,8 +396,181 @@
 				\end{itemize}
 		\end{itemize}
 
+\clearpage
 \section{Measures of Similarity and Dissimilarity}
 
+	\begin{itemize}
+		\item {\bf Proximity:} the term is used to refer to either similarity or dissimilarity
+		\item {\bf Similarity:} similarity between two objects is a numerical measure of the degree 
+		to which the two objects are alike.
+		\item{\bf Dissimilarity:} dissimilarity between two objects is a numerical measure of the 
+		degree to which the two objects are different.
+		\item {\bf Transformations:} are often applied to convert a similarity to a dissimilarity
+		or vice versa, or to transform a proximity measure to fall within a particular range,
+		such as [0, 1].
+	\end{itemize}
 
+	\subsection*{Similarity and Dissimilarity between Simple Attributes}
+
+		\begin{itemize}
+			\item{\bf Nominal:} since nominal attributes only convey information about
+			the distinctness of objects, all we can say is that two objects either have the
+			same value or they do not.
+			\item{\bf Ordinal:} for objects with a single ordinal attribute, the situation
+			is more complicated because information about order should be taken into account.
+			Consider an attribute that measures the quality of a product, e.g., a candy bar, 
+			on the scale {poor, fair, OK, good, wonderful} = {poor=0, fair=1, OK=2, good=3, 
+			wonderful=4}.
+			\item{\bf Ratio:} for interval or ratio attributes, the natural measure of dissimilarity
+			between two objects is the absolute difference of their values.
+		\end{itemize}
+
+		\begin{figure}[H]
+			\includegraphics[width=\textwidth]{pics/simpleAttribute.png}
+		\end{figure}
+
+	
+	\subsection*{Dissimilarities between Data Objects}
+
+	{\bf Euclidean distance:} The euclidean distance, d, between two points, x and y,
+	in one-, two-, three-, or higher dimensional space, is given by the following formula:
+
+		$d(x,y) = \sqrt{\sum_{k=1}^{n} (x_k - y_k)^{2}}$
+	
+
+	where n is the number of dimensions, and xk and yk are repsectively the k'th attibutes
+	of x and y. 
+
+	\clearpage
+	{\bf Minkowski distances:}
+
+
+		$d(x,y) = \left(\sum_{k=1}^{n} |x_k - y_k|^{r}\right) ^{1/r}$
+
+	\begin{itemize}
+		\item {\bf r = 1} City block (Manhattan, txicab, $L_{1}$ norm) distance.
+		\item {\bf r = 2} Euclidean distance ($L_{2}$ norm).
+		\item {\bf r = $\infty$} Supremum ($L_{max}$ or $L_{\infty}$) distance.
+	\end{itemize}
+
+	Distances, such as the Eucledian distance, have some well-known properties. if
+	d(x,y) is the distance between two points, x and y, then the following properties
+	hold:
+
+		\begin{enumerate}
+			\item {\bf Positivity}
+			\begin{enumerate}
+				\item d(x,y) $\geq$ for all x and y,
+				\item d(x,y) = 0 only if x = y
+			\end{enumerate}
+			\item {\bf Symmetry} \\
+				d(x,y) = d(y,x) for all x and y
+			\item {\bf Triangle Inequality} \\
+				d(x,z) $\leq$ d(x,y) + d(y,z) for all points x, y, and z
+		\end{enumerate}
+
+	{\bf Metrics: } measures that satisfy all three properties are known as metrics.
+
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{| l | l | l |}
+			\hline
+			point & x coordinate & y coordinate \\ \hline
+			p1 & 0 & 2 \\ \hline
+			p2 & 2 & 0 \\ \hline
+			p3 & 3 & 1 \\ \hline
+			p4 & 5 & 1 \\ \hline
+		\end{tabular}
+		\begin{tabular}{| l | l | l | l | l |}
+			\hline
+			 & p1 & p2 & p3 & p4 \\ \hline
+			p1 & 0.0 & 2.8 & 3.2 & 5.1 \\ \hline
+			p2 & 2.8 & 0.0 & 1.4 & 3.2 \\ \hline
+			p3 & 3.2 & 1.4 & 0.0 & 2.0 \\ \hline
+			p4 & 5.1 & 3.2 & 2.0 & 0.0 \\ \hline
+		\end{tabular}
+		\caption{(a) x and y coordinates, (b) Euclidean distance matrix}
+	\end{table}
+
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{| l | l | l | l | l |}
+			\hline
+			$L_{1}$ & p1 & p2 & p3 & p4 \\ \hline
+			p1 & 0.0 & 4.0 & 4.0 & 6.0 \\ \hline
+			p2 & 4.0 & 0.0 & 2.0 & 4.0 \\ \hline
+			p3 & 4.0 & 2.0 & 0.0 & 2.0 \\ \hline
+			p4 & 6.0 & 4.0 & 2.0 & 0.0 \\ \hline
+		\end{tabular}
+		\begin{tabular}{| l | l | l | l | l |}
+			\hline
+			$L_\infty$ & p1 & p2 & p3 & p4 \\ \hline 
+			p1 & 0.0 & 2.0 & 3.0 & 5.0 \\ \hline
+			p2 & 2.0 & 0.0 & 1.0 & 3.0 \\ \hline
+			p3 & 3.0 & 1.0 & 0.0 & 2.0 \\ \hline
+			p4 & 5.0 & 3.0 & 2.0 & 0.0 \\ \hline
+		\end{tabular}
+		\caption{(a) $L_{1}$ distance matrix, (b) $L_{\infty}$ distance matrix}
+	\end{table}
+
+\subsection*{Similarities between Data Objects}
+	If s(x,y) is the similarity between points x and y, then the typical properties
+	of similarities are the following:
+		\begin{enumerate}
+			\item s(x,y) = 1 only if x = y. (0 $\leq$ s $\geq$ 1)
+			\item s(x,y) = s(y,x) for all x anf y. (Symmetry)
+		\end{enumerate}
+
+\subsection*{Examples}
+
+	{\bf Similarity Measures of Binary Data:}
+
+	Similarity measures between objects that contain only binary attributes are called
+	similarity coefficients, and typically have values between 0 and 1.
+	Let x and y be two objects that consist of n binary attributes. The comparison 
+	of two such objects, i.e., two binary vectors, leads to the following four quantities
+	(frequancies):
+
+		$f_{00}$ = the number of attributes where x is 0 and y is 0 \\
+		$f_{01}$ = the number of attributes where x is 0 and y is 1 \\
+		$f_{10}$ = the number of attributes where x is 1 and y is 0 \\
+		$f_{11}$ = the number of attributes where x is 1 and y is 1 \\
+
+	{\bf Simple Matching Coefficient (SMC)} one commonly used similarity coefficient, 
+	which is defined as: \\
+
+		SMC = $\frac{number of matching attribute values}{number of attributes}$ = 
+		$\frac{f_{11} + f_{00}}{f_{01} + f_{10} + f_{11} + f_{00}}$
+		\\
+
+
+	{\bf Jaccard Coefficient} is frequently used to handle objects consisting of 
+	asymmetric binary attributes. The Jaccard coefficient, which is often symolized by J, 
+	is given by the following equation: \\
+
+		$J = \frac{number of matching presences}{number of attibutes not involved in 00 matches} =
+		\frac{f_{11}}{f_{01} + f_{10} + f_{11}}$
+		\\
+
+	{\bf Cosine Similarity} \\ 
+
+		cos(x,y) = $\frac{x*y}{\|x\| \|y\|}$
+		\\
+
+	{\bf Extended Jaccard Coefficient} \\
+
+		EJ(x,y) = $\frac{x*y}{\|x\|^{2} + \|y\|^{2} - x*y}$
+		\\
+
+	{\bf Correlation} between two data objects that have binary or continuous variables is a
+	measure of the linear relationship between the attributes of the objects. 
+	{\bf Pearson's correlation} coefficient between two data objects, x and y, is defined
+	by the following equation: \\
+
+		corr(x,y) = $\frac{covariance(x,y)}{standardDeviation(x)*standardDeviation(Y)}$ = 
+		$\frac{s_{xy}}{s_{x}s_{y}}$
+
+
+	
 
 
