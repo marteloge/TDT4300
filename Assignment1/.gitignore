@@ -21,6 +21,7 @@
 *.lot
 *.toc
 *.tex~
+*.pdf
 
 # Vim
 *.swp
