@@ -20,4 +20,5 @@
 
 #Other stuff to ignore
 
-	.idea/
+	AprioriAlgorithm/.idea/
+	*.iml
