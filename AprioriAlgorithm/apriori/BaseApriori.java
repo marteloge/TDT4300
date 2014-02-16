@@ -1,4 +1,4 @@
-package no.ntnu.idi.dm.arm.apriori;
+package apriori;
 
 import java.util.Collections;
 import java.util.HashSet;

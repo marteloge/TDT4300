@@ -1,4 +1,4 @@
-package no.ntnu.idi.dm.arm.runnables;
+package runnables;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import no.ntnu.idi.dm.arm.apriori.AbstractApriori;
-import no.ntnu.idi.dm.arm.apriori.BruteForceApriori;
-import no.ntnu.idi.dm.arm.apriori.FKMinus1F1Apriori;
-import no.ntnu.idi.dm.arm.apriori.FkMinus1FKMinus1;
-import no.ntnu.idi.dm.arm.apriori.ItemSet;
+import apriori.AbstractApriori;
+import apriori.BruteForceApriori;
+import apriori.FKMinus1F1Apriori;
+import apriori.FkMinus1FKMinus1;
+import apriori.ItemSet;
 
 public class AprioriItemSetGeneratorAndRuleGeneration {
 
