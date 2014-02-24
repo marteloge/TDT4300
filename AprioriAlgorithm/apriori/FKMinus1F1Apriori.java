@@ -1,10 +1,6 @@
 package apriori;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class FKMinus1F1Apriori<V> extends BaseApriori<V> {
 
@@ -13,14 +9,32 @@ public class FKMinus1F1Apriori<V> extends BaseApriori<V> {
 	}
 
 	@Override
-	public List<ItemSet<V>> aprioriGen(
-			List<ItemSet<V>> frequentCandidatesKMinus1) {
+	public List<ItemSet<V>> aprioriGen(List<ItemSet<V>> frequentCandidatesKMinus1) {
 		Collections.sort(frequentCandidatesKMinus1);
-		int allGeneratedCandidatesCounter = 0;
-		Set<ItemSet<V>> frequentCandidateSet = new HashSet<ItemSet<V>>();
-		
-		//TODO
-		
-		return new LinkedList<ItemSet<V>>(frequentCandidateSet);
-	}
+
+        List<ItemSet<V>> levelCandidates = new ArrayList<ItemSet<V>>();
+        for (int i = 0; i < frequentCandidatesKMinus1.size(); i++) {
+            for (int j = 0; j < frequent1Itemsets.size(); j++) {
+
+                ItemSet<V> c1 = frequentCandidatesKMinus1.get(i);
+                ItemSet<V> c2 = frequent1Itemsets.get(j);
+
+                System.out.println("C1: " + c1);
+                System.out.println("C2: " + c2);
+                System.out.println("Union: " + c1.union(c2));
+
+                if (c1.union(c2).size() == c1.size() + 1) {
+                    ItemSet<V> candidate = c1.union(c2);
+
+                    if (!levelCandidates.contains(candidate)){
+                        levelCandidates.add(candidate);
+                        System.out.println("Added candidate: " + candidate);
+                    }
+
+                    getAndCacheSupportForItemset(candidate);
+                }
+            }
+        }
+        return new LinkedList<ItemSet<V>>(levelCandidates);
+    }
 }
