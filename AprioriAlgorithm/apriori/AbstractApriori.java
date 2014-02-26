@@ -137,8 +137,20 @@ public abstract class AbstractApriori<V> {
 	 */
 	public void generateRulesBase(ItemSet<V> frequentItemSet,
 			ItemSet<V> consequent) {
+        //Create new rule
+		AssociationRule<V> rule=new AssociationRule<V>(frequentItemSet.difference(consequent) ,consequent);
 
-		AssociationRule rule=new AssociationRule(frequentItemSet,consequent);
+        //Compute support
+        Double support = supportCache.get(frequentItemSet.union(consequent));
+        Double rest = supportCache.get(frequentItemSet);
+
+        if(support != null){
+            rule.setSupport(support);
+            rule.setConfidence(support/rest);
+        }
+
+        //Adding the new rule
+        rules.add(rule);
 	}
 
 	/**

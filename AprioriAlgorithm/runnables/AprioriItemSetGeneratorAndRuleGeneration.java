@@ -100,8 +100,11 @@ public class AprioriItemSetGeneratorAndRuleGeneration {
 
 		apriori.generateAllRules();
 		
-		System.out.println("Generated " + apriori.getRules().size() + " rules.");
+		System.out.println("Generated " + apriori.getRules() + " rules.");
 
+        for(int i=0; i<apriori.getRules().size(); i++){
+            System.out.println(apriori.getRules().get(i));
+        }
 	}
 
 }
