@@ -47,8 +47,7 @@ public class BaseApriori<V> extends AbstractApriori<V> {
 				}
 			}
 		}
-		System.out.println(allGeneratedCandidatesCounter
-				+ " total, unique itemsets: " + frequentCandidateSet.size());
+
 		return new LinkedList<ItemSet<V>>(frequentCandidateSet);
 	}
 

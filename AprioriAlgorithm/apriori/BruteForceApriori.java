@@ -14,25 +14,21 @@ public class BruteForceApriori<V> extends BaseApriori<V> {
 	@Override
 	public void apriori(Double minSupport) {
 
-        /*
-        * Får ut en liste med single transactions
-        * */
+
+        //Får ut en liste med alle attributter (1-itemset)
         List<ItemSet<V>> singles = getAllItemsetsOfSizeOne();
 
-        /*
-         * pruning
-         * */
+        //prune all infrequent items in itemset
         List<ItemSet<V>> pruned = pruneInfrequentCandidates(minSupport,singles);
-
-        System.out.println("Level: "+1+"\n"+"\tGenerated "+singles.size() + " candidates.\n");
-        System.out.print("\t"+singles+"\n");
-        System.out.print(
-                "\tAnd kept " + pruned.size() + " frequent sets\n" +
-                        "\t" + pruned);
         frequent1Itemsets = pruned;
         frequentItemSets.put(1,pruned);
 
-        //Candidates for lower levels
+        //Sysout results
+        System.out.println("Level: "+1+"\n"+"\tGenerated "+singles.size() + " candidates.\n");
+        System.out.println("\t"+singles+"\n");
+        System.out.println("\tAnd kept " + pruned.size() + " frequent sets\n \t" + pruned);
+
+        //Candidates for higher levels
         List<ItemSet<V>> candidates = singles;
 
         for (int i = 2; ; i++){
@@ -40,7 +36,7 @@ public class BruteForceApriori<V> extends BaseApriori<V> {
             //Generate possible candidates
             List<ItemSet<V>> generatedCandidates = aprioriGen(candidates);
 
-            System.out.println("Level: "+i+"\n"+
+            System.out.println("\nLevel: "+i+"\n"+
                     "\tGenerated "+generatedCandidates.size() + " candidates.\n");
             System.out.print("\t"+generatedCandidates+"\n");
 
@@ -48,7 +44,7 @@ public class BruteForceApriori<V> extends BaseApriori<V> {
             candidates = generatedCandidates;
 
             //pruning
-            pruned = pruneInfrequentCandidates(minSupport,generatedCandidates);
+            pruned = pruneInfrequentCandidates(minSupport, candidates);
 
             System.out.print(
                             "\tAnd kept " + pruned.size() + " frequent sets\n" +
