@@ -1,0 +1,7 @@
+\BOOKMARK [1][-]{section.1}{Implementation of Frequent Itemset Methods}{}
+\BOOKMARK [2][-]{subsection.1.1}{Brute-Force}{section.1}
+\BOOKMARK [2][-]{subsection.1.2}{FKminus1F1}{section.1}
+\BOOKMARK [2][-]{subsection.1.3}{FKminus1FKminus1}{section.1}
+\BOOKMARK [1][-]{section.2}{Scaleability of Implemented Methods}{}
+\BOOKMARK [2][-]{subsection.2.1}{Small Data Set}{section.2}
+\BOOKMARK [2][-]{subsection.2.2}{Big Data Set}{section.2}
