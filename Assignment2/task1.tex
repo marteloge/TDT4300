@@ -1,0 +1,70 @@
+\section{Implementation of Frequent Itemset Methods}
+	
+	In this exercise we implemented 3 different methods for generating the frequent 
+	itemsets. We will in describe the implementation of each in this section.
+
+	\subsection{Method 1: Brute-Force}
+		This method is quite simple; it genereates all possible combination and 
+		prune candidates that have support less than the threshold (minsupport), which
+		is 0.4 in this implementation. 
+
+	\subsection{Method 2: FKminus1F1}
+		This method loops through two itemlists,  $F_{k-1}$ and F1, to check if the union
+		of generate a new candidate that satisfies the two properties:
+			\begin{enumerate}
+				\item The union of two sets is one more element than the k-1 itemset
+				\item The candidate is not already in the candidate set
+			\end{enumerate}
+
+	\subsection{Method 3: FKminus1FKminus1}
+		This method loops through two $F_{k-1}$ itemsets and checks the first element in 
+		the itemlist. If the first itemlist is equal, it checks if the union satisfies
+		the properties from the last method. If the first element is different, the element
+		is not considered as a candidate. The reason for this is because the elements in 
+		the itemlists are lexically sorted. Example:
+		You can union the elements \{Bread, Diapers\} and \{Bread, Milk\} to generate
+		the candidate \{Bread, Diapers, Milk\}, the method does not need to union the
+		elements \{Beer, Diapers\} with \{Bread, Milk\} because the first item in both
+		itemsets are different. If \{Beer, Diapers, Milk\} is a viable candidate,
+		it would have been obtained by merging \{Beer, Diapers\} with \{Beer, Milk\} becuase
+		the first item in both lists are equal. 
+
+
+\section{Scaleability of Implemented Methods}
+	
+	\subsection*{Small Data Set}
+	\begin{table}[H]
+		\begin{tabular}{| p{3.5cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} | }
+			\hline
+			Method & Level 1 & Level 2 & Level 3 & Level 4 \\ \hline
+			Brute-Force & Generated 6 kept 4 & Generated 15, kept 4 & Generated 20, kept 4 & Generated 20, kept 1 \\ \hline
+			FKminus1F1 & Generated 6, kept 4 & Generated 6, kept 4 & Generated 4, kept 1 & - \\ \hline
+			FKminus1FKminus1 & Generated 6, kept 4 & Generated 6, kept 4 & Generated 1, kept 1 & - \\ \hline
+		\end{tabular}
+	\end{table}
+
+	\subsection*{\bf Big Data Set}
+	\begin{table}[H]
+		\begin{tabular}{| p{3.5cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} | p{2.5cm} | }
+			\hline
+			Method & Level 1 & Level 2 & Level 3 & Level 4 \\ \hline
+			Brute-Force & Generated 6kept 4 & Generated 15, kept 4 & Generated 20, kept 4 & Generated 20, kept 1 \\ \hline
+			FKminus1F1 & Generated 122, kept 17 & Generated 136, kept 15 & - & - \\ \hline
+			FKminus1FKminus1 & Generated 122, kept 17 & Generated 136, kept 15 & - & - \\ \hline
+		\end{tabular}
+	\end{table}
+
+
+	After looking at the results, we might think that one of the implementations are wrong because
+	there is no improvement between the method 2 and 3 running with the big data set. It is possible that 
+	there is something wrong in the method 3. According to the book is it following the correct
+	approach, but the description is vague. We have might missed an essential detail. 
+
+
+	If we take a look at the table running the big data set, we can see that there is no results
+	when running the brute-force method. The reason is very simple: it does not scale very well and took
+	many minutes running without a result. 
+
+
+	Looking at method 2, we can see a clear improvement with both data sets. With the small data set
+	we can see that it found the solution with only 3 levels and only 2 levels with the big data set. 
