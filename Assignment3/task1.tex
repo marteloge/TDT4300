@@ -1,0 +1,91 @@
+\section{Decision Trees}
+
+\subsection*{Attributes}
+	\begin{itemize}
+		\item Age: which may have values {Young, Medium young, Old}
+		\item Income: that may have values {Low, Medium, High}
+		\item Student: who may have values {yes, no}
+		\item Creditworthiness: that can have values {Pass, High}
+		\item Buy a PC: can have values {yes, no}
+	\end{itemize}
+
+\subsection*{Gini Index}
+
+	
+		\begin{equation}
+		Gini(t) = 1 - \sum_{i=0}^{c-1} [p(i|t)]^{2} 
+		\end{equation}
+	
+		c = number of classes \\
+		p(i$|$t) = fraction of records belonging to class i
+
+
+\subsection*{Questions}
+	
+		{\bf 1) Compute the Gini index for the entire training set (Table 1)}
+
+		{\bf 2) Compute the Gini index for the UserID attribute}
+
+		\begin{table}[H]
+			\begin{tabular}{ l | l | l | l | l | l | l | l | l | l | l |l | l | l }
+				 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & ..... & 16 & 17 & 18 & 19 & 20  \\ \hline
+				Yes & 0 & 0 & 1 & 1 & 1 & 0 & 1 & ..... & 1 & 1 & 0 & 0 & 1  \\ \hline 
+				No & 1 & 1 & 0 & 0 & 0 & 1 & 0 & ..... & 0 & 0 & 1 & 1 & 0  \\ \hline
+				Totalt & 1 & 1 & 1 & 1 & 1 & 1 & 1 & ..... & 1 & 1 & 1 & 1 & 1 \\
+			\end{tabular}
+		\end{table}
+
+		{\bf 3) Compute the Gini index for the Age attribute.}
+
+		\begin{table}[H]
+			\begin{tabular}{ l | l | l | l  }
+				 & Young & Medium young & old  \\ \hline
+				Yes & 4 & 5 & 3 \\ \hline
+				No & 3 & 1 & 4 \\ \hline
+				Total & 7 & 6 & 7 \\
+			\end{tabular}
+		\end{table}
+
+		$Gini(Young) = 1 - (4/7)^{2} - (3/7)^{2} = 0.4898$
+
+		$Gini(Medium young) = 1 - (4/7)^{2} - (3/7)^{2} = 0.2778$
+
+		$Gini(old) = 1 - (4/7)^{2} - (3/7)^{2} = 0.4898$
+		
+		$Gini(Age) = (7/20)*0.4898 + (6/20)*0.2778 + (7/20)*0.4898 = 0.4262$		
+
+		{\bf 4) Compute the Gini index for Student attribute.}
+
+		\begin{table}[H]
+			\begin{tabular}{ l | l | l }
+				 & Yes & No   \\ \hline
+				Yes & 8 & 4 \\ \hline
+				No & 2 & 6 \\ \hline
+				Total & 10 & 10 \\
+			\end{tabular}
+		\end{table}
+
+		$Gini(Yes) = 1 - (8/10)^{2} - (2/10)^{2} = 0.32$
+
+		$Gini(No) = 1 - (4/10)^{2} - (6/10)^{2} = 0.48$
+		
+		$Gini(Student) = (10/20)*0.32 + (10/20)*0.48 = 0.4$
+
+		{\bf 5) Compute the Gini index for Creditworthiness attribute.}
+
+		\begin{table}[H]
+			\begin{tabular}{ l | l | l }
+				 & Pass & High   \\ \hline
+				Yes & 6 & 6 \\ \hline
+				No & 4 & 4 \\ \hline
+				Total & 10 & 10 \\
+			\end{tabular}
+		\end{table}
+
+		$Gini(Pass) = 1 - (6/10)^{2} - (4/10)^{2} = 0.48$
+
+		$Gini(High) = 1 - (6/10)^{2} - (4/10)^{2} = 0.48$
+		
+		$Gini(Creditworthiness) = (10/20)*0.48 + (10/20)*0.48 = 0.48$
+
+		{\bf 6) Which attribute is the best?}
