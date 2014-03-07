@@ -1,0 +1,46 @@
+\section{Classification}
+
+	\subsection*{Properties of Datasets}
+	The task specified that we should look at the datasets iris, diabetes and spambase, 
+	but the version we downloaded did not contain the spambase dataset.
+	We picked the breast-canser dataset instead in order to complete the assigment. 
+
+	\begin{table}[H]
+		\begin{tabular}{ p{4cm} | p{8cm} }
+			\hline
+			\rowcolor{gray}
+			 & {\bf Iris} \\ \hline
+			{\bf Variables} & (5 variables)
+			sepallength, sepalwidth, petallength, petalwidth, 
+			class(Iris-setosa, Iris-versicolor, Iris-virginica) \\ \hline
+			{\bf Number of Instances} & 150 \\ \hline
+			{\bf Type of data} & Numeric attributes and Nominal Class\\ \hline
+			{\bf Classification of variable} & The petallength has the biggest \% of unique 
+			values, that will make this variable the one that is hardest to classify. \\ \hline
+		\end{tabular}
+
+		\begin{tabular}{ p{4cm} | p{8cm} }
+			\hline
+			\rowcolor{gray}
+			 & {\bf Diabetes} \\ \hline
+			{\bf Variables} & preg, plas, pres, skin, insu, mass, pedi, age, 
+			class(tested\_negative, tested\_positive)	\\ \hline
+			{\bf Number of Instances} & 768 \\ \hline
+			{\bf Type of data} & Numeric attributes and Nominal Class \\ \hline
+			{\bf Classification of variable} & The pedi variable has 346 unique values (45\%).
+			We think that a classification of this variables is the hardest one. \\ \hline
+		\end{tabular}
+
+		\begin{tabular}{ p{4cm} | p{8cm} }
+			\hline
+			\rowcolor{gray}
+			 & {\bf Breast cancer} \\ \hline
+			{\bf Variables} & (10 variables) age, menopause, tumor-size, inv-nodes, node-caps, deg-malig,
+			breast, breast-quad, irradiat, class (no-recurrence-events, recurrence-events) \\ \hline
+			{\bf Number of Instances} & 286 \\ \hline 
+			{\bf Type of data} & Nominal \\ \hline
+			{\bf Classification of variable} & This dataset contains nominal values, and the variable
+			with the most possible values will be the one that is hardest to classify.
+			inv-nodes has 13 different labels (when splitting, 13 new nodes).  \\ \hline
+		\end{tabular}
+	\end{table}
