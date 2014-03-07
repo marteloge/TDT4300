@@ -1,6 +1,6 @@
 \section{Decision Trees}
 
-\subsection*{Attributes}
+\section*{Attributes}
 	\begin{itemize}
 		\item Age: which may have values {Young, Medium young, Old}
 		\item Income: that may have values {Low, Medium, High}
@@ -9,7 +9,7 @@
 		\item Buy a PC: can have values {yes, no}
 	\end{itemize}
 
-\subsection*{Gini Index}
+\section*{Gini Index}
 
 	
 		\begin{equation}
@@ -20,11 +20,29 @@
 		p(i$|$t) = fraction of records belonging to class i
 
 
-\subsection*{Questions}
+\section*{Questions} 
 	
-		{\bf 1) Compute the Gini index for the entire training set (Table 1)}
+		\subsection*{1) Compute the Gini index for the entire training set}
 
-		{\bf 2) Compute the Gini index for the UserID attribute}
+		The Gini for the whole training set will be to calculate the Gini for the 
+		class "Buy PC".
+
+		\begin{table}[H]
+			\begin{tabular}{ l | c }
+				 & Buy PC \\ \hline
+				Yes & 12 \\ \hline
+				No & 8 \\ \hline
+				Total & 20 \\
+			\end{tabular}
+		\end{table}
+
+		$Gini(Buy PC) = 1 - (12/20)^{2} - (8/20)^{2} = 0.48$
+
+		\clearpage
+		\subsection*{2) Compute the Gini index for the UserID attribute}
+
+		When splitting the data by UserID we will have 20 nodes and each 
+		has the Gini index of 0. 
 
 		\begin{table}[H]
 			\begin{tabular}{ l | l | l | l | l | l | l | l | l | l | l |l | l | l }
@@ -35,10 +53,20 @@
 			\end{tabular}
 		\end{table}
 
-		{\bf 3) Compute the Gini index for the Age attribute.}
+		The average weighted of the Gini index for the nodes is:
+
+		$ Gini(UserID = 1) = 1 - (0/1)^{2} - (1/1)^{2} = 0 $
+
+		(Gini for each UserID is the same for UserID 1-20)
+
+		$ Gini(UserID) = (1/20)*0 + (1/20)*0 + .... + (1/20)*0 = 0 $
+
+
+
+		\subsection*{3) Compute the Gini index for the Age attribute.}
 
 		\begin{table}[H]
-			\begin{tabular}{ l | l | l | l  }
+			\begin{tabular}{ c | c | c | c  }
 				 & Young & Medium young & old  \\ \hline
 				Yes & 4 & 5 & 3 \\ \hline
 				No & 3 & 1 & 4 \\ \hline
@@ -54,10 +82,12 @@
 		
 		$Gini(Age) = (7/20)*0.4898 + (6/20)*0.2778 + (7/20)*0.4898 = 0.4262$		
 
-		{\bf 4) Compute the Gini index for Student attribute.}
+
+		\clearpage
+		\subsection*{4) Compute the Gini index for Student attribute.}
 
 		\begin{table}[H]
-			\begin{tabular}{ l | l | l }
+			\begin{tabular}{ c | c | c }
 				 & Yes & No   \\ \hline
 				Yes & 8 & 4 \\ \hline
 				No & 2 & 6 \\ \hline
@@ -71,10 +101,11 @@
 		
 		$Gini(Student) = (10/20)*0.32 + (10/20)*0.48 = 0.4$
 
-		{\bf 5) Compute the Gini index for Creditworthiness attribute.}
+
+		\subsection*{5) Compute the Gini index for Creditworthiness attribute.}
 
 		\begin{table}[H]
-			\begin{tabular}{ l | l | l }
+			\begin{tabular}{ c | c | c }
 				 & Pass & High   \\ \hline
 				Yes & 6 & 6 \\ \hline
 				No & 4 & 4 \\ \hline
@@ -88,4 +119,20 @@
 		
 		$Gini(Creditworthiness) = (10/20)*0.48 + (10/20)*0.48 = 0.48$
 
-		{\bf 6) Which attribute is the best?}
+		
+		\subsection*{6) Which attribute is the best?}
+
+		\begin{table}[H]
+			\begin{tabular}{ c | c | c | c | c | c }
+				 & UserID & Age & Student & Creditwrthiness & Buy PC \\ \hline
+				Gini Index & 0 & 0.4262 & 0.4 & 0.48 & 0.48 \\ 
+			\end{tabular}
+		\end{table}
+
+		Thee smaller the degree of impurity, the clearer the class distribution. 
+		Therefore the attribute Student = 0.4 is the best attribute to split by.
+
+		As we can see in the table above, the UserID has a Gini index of 0 and has 
+		a lower Gini index than student. The reason why we have selected Student over
+		UserID is because UserID is the “primary key” (unique) for each 
+		record, therefore it cannot be used as the attribute for splitting.
