@@ -136,3 +136,26 @@
 		a lower Gini index than student. The reason why we have selected Student over
 		UserID is because UserID is the “primary key” (unique) for each 
 		record, therefore it cannot be used as the attribute for splitting.
+
+
+		\clearpage
+		\subsection*{Explain Decision Tree procedure}
+
+		Suppose we have the following two users we want to predict whether they
+		should be able to buy a PC or not. Explain how you want to proceed.
+		
+		\begin{itemize}
+			\item {\bf UserID 21:} A young student with medium income and “high” 
+			creditworthiness.
+			\item {\bf UserID 22:} A young non-student with low income and “pass” 
+			creditworthiness.
+		\end{itemize}
+
+		To predict if a user want to buy a PC or not is a good situation to build a
+		decision tree. The way to build a decision tree is to use the training data
+		set and build a tree by always pick the attribute with the lowest Gini index.
+		If the leaf node in the tree does not have a specified class, split until
+		all leaf nodes is a specified class node. 
+
+		When I have my decision tree I can easily follow the tree to I get to a leaf
+		node that will tell the prediction for a specific record.
