@@ -1,10 +1,7 @@
-\section{Classification}
+\section{Classification (task 2)}
 
-	\subsection*{Properties of Datasets}
-	The task specified that we should look at the datasets iris, diabetes and spambase, 
-	but the version we downloaded did not contain the spambase dataset.
-	We picked the breast-canser dataset instead in order to complete the assigment. 
-
+	\section*{Properties of Datasets}
+	
 	\begin{table}[H]
 		\begin{tabular}{ p{4cm} | p{8cm} }
 			\hline
@@ -14,7 +11,7 @@
 			sepallength, sepalwidth, petallength, petalwidth, 
 			class(Iris-setosa, Iris-versicolor, Iris-virginica) \\ \hline
 			{\bf Number of Instances} & 150 \\ \hline
-			{\bf Type of data} & Numeric attributes and Nominal Class\\ \hline
+			{\bf Type of data} & 4 continuous, 1 nominal class label\\ \hline
 			{\bf Classification of variable} & The petallength has the biggest \% of unique 
 			values, that will make this variable the one that is hardest to classify. \\ \hline
 		\end{tabular}
@@ -26,7 +23,7 @@
 			{\bf Variables} & preg, plas, pres, skin, insu, mass, pedi, age, 
 			class(tested\_negative, tested\_positive)	\\ \hline
 			{\bf Number of Instances} & 768 \\ \hline
-			{\bf Type of data} & Numeric attributes and Nominal Class \\ \hline
+			{\bf Type of data} & 8 continuous, 1 nominal class label \\ \hline
 			{\bf Classification of variable} & The pedi variable has 346 unique values (45\%).
 			We think that a classification of this variables is the hardest one. \\ \hline
 		\end{tabular}
@@ -34,13 +31,146 @@
 		\begin{tabular}{ p{4cm} | p{8cm} }
 			\hline
 			\rowcolor{gray}
-			 & {\bf Breast cancer} \\ \hline
-			{\bf Variables} & (10 variables) age, menopause, tumor-size, inv-nodes, node-caps, deg-malig,
-			breast, breast-quad, irradiat, class (no-recurrence-events, recurrence-events) \\ \hline
-			{\bf Number of Instances} & 286 \\ \hline 
-			{\bf Type of data} & Nominal \\ \hline
-			{\bf Classification of variable} & This dataset contains nominal values, and the variable
-			with the most possible values will be the one that is hardest to classify.
-			inv-nodes has 13 different labels (when splitting, 13 new nodes).  \\ \hline
+			 & {\bf Spambase} \\ \hline
+			{\bf Variables} & The variables are used to collect frequently used words and characters
+			used in emails to classify if its spam. Will not list all of the variables here.  \\ \hline
+			{\bf Number of Instances} &  4601 \\ \hline 
+			{\bf Type of data} & (58 variables) 57 continuous, 1 nominal class label \\ \hline
+			{\bf Classification of variable} & capital\_run\_average is the hardest to classify because 29\%
+			of the records is unique.  \\ \hline
 		\end{tabular}
 	\end{table}
+
+
+	\clearpage	
+	\section*{Classification of datasets}
+
+		\begin{table}[H]
+			\begin{tabular}{ >{\centering\arraybackslash}p{5cm} | >{\centering\arraybackslash}p{5cm} }
+				\hline
+				\rowcolor{gray}
+				{\bf Algorithm} & {\bf Accuracy} \\ \hline
+				
+				\multicolumn{2}{c}{\bf Iris datset} \\ \hline
+				J48 & 96.0784 \% \\ \hline
+				k-NN & 96.0784 \% \\ \hline
+				SMO &  96.0784 \% \\ \hline
+				
+				\multicolumn{2}{c}{\bf Diabetes datset} \\ \hline
+				J48 & 76.2452 \% \\ \hline
+				k-NN & 72.7969 \% \\ \hline
+				SMO &  79.3103 \% \\ \hline
+				
+				\multicolumn{2}{c}{\bf Spambase dataset} \\ \hline
+				J48 & 92.1995 \% \\ \hline
+				k-NN &  89.0026 \% \\ \hline
+				SMO &  90.5371 \% \\ \hline
+			\end{tabular}
+		\end{table}
+
+	\clearpage
+	\section*{Evaluation}
+
+		{\bf Cross validation:} 
+			Accurancy can in be misleading. To ensure that the evaluation
+			of a model is correct, you can use a varity of evaluation strategies. One way of doing
+			evaluation is to use cross-validation. This method split the data set into k disjoint subsets
+			(k-fold). The method uses k-1 subsets for training and the remaining one for testing
+			the model. After getting the results from the k-1 subsets, it will compare all the 
+			calculations of the subsets to create a better total estimate of the calculation. 
+			The subsets are picked random each time.
+
+			(Source: BSc Thesis Artificial Intelligence, Author: Patrick Ozer, Radboud University 
+			Nijmegen January 2008)
+
+		{\bf When does cross-calidation has the biggest effect?:} 
+			We did run the cross-validation with 10 subsets (10-fold cross-validation).
+			After running all the datasets with the different algorithms, we didn't see 
+			a very big difference in the results of the accuracy. The biggest difference is found
+			in the big database 'spambase'. We think that the bigger the dataset, the bigger
+			difference will occur when comparing the accuracy for "slitting" and "cross-validation".
+
+			For example is overfitting and underfitting a good example for using
+			cross-validation. If you have a big dataset, it would be a good idea to split the dataset into
+			smaller sets to reduce the risk of overfitting. 
+			When you have a big and complex dataset, splitting the dataset into smaller subsets
+			can sometimes give a positive results in reducing resource and time usage.
+
+
+		{\bf What happens if the dataset is ordered accoring to classes?:} 
+			If you do cross-validation on a sorted dataset, it will still give a good estimate
+			because for each subset, the instances is picked randomly. 
+
+		{\bf You have 3 classes and a precentage split of 66\%. Is it reasonable to do percentage split?}
+			We assume that this question still want us to consider a sorted dataset by class.
+			If we have 3 classes and a percenatage split of 66\%, then the model is trained by
+			66\% of the instances and tested by the rest of the dataset. This would be a disaster!
+			You can compare the situation with a classification of a animal with classes 'cat', 'dog' and 'horse'.
+			If you sort this dataset, you would probably have the most of the instances with the class
+			'cat' and 'dog' in the training set and all the instances of 'horse' in the testing set. 
+			Why would you have a model that probably only would classify 2 of 3 classes right?
+			The accuracy would probably be very low, because the most of the instances in the testing set
+			would not be classified to the correct class. 
+
+	\section*{Best Classifiers}
+		{\bf Which of the classifiers report the best results? Is any one of the classifiers consistently 
+		better than the others?}
+
+			The J48 and the SMO Algorithm is showing the best results for the dataset. The 
+			J48 is the best in all datsets, besides in the dataset for diabetes where the SMO
+			gave the best result. 
+			(The evaluation is done with the 66\% split and the 10-fold cross-validation.)
+
+		{\bf Can you find other classifiers in weka which produce better results?}
+			In this task we picked some algorithms in weka with 66\% split and calculated the accuracy. 
+			(the results is on the next page).
+
+			There is an algorithm that is better than the listed ones in the exercise. We found an improvement
+			in accurancy for all datasets with th FT tree algorithm. There is also other algorithms that 
+			is a better fit for each dataset. Look at the algorithms in bold at the next page. 
+
+		\begin{table}[H]
+			\begin{tabular}{ >{\centering\arraybackslash}p{5cm} | >{\centering\arraybackslash}p{5cm} }
+				\hline
+				\rowcolor{gray}
+				{\bf Algorithm} & {\bf 66\% split} \\ \hline
+				
+				\multicolumn{2}{c}{\bf Iris datset} \\ \hline
+					J48 & 96.0784 \% \\ \hline  
+					k-NN & 96.0784 \% \\ \hline
+					SMO & 96.0784 \% \\ \hline
+					{\bf MultilayerPerceptron} & {\bf 98.0392 \%} \\ \hline
+					{\bf SimpleLogistic} & {\bf 98.0392 \%}\\ \hline
+					{\bf FT(trees)} & {\bf 98.0392 \%} \\ \hline
+					{\bf LMT(trees)} & {\bf 98.0392 \%}  \\ \hline
+					DMNBtext & 33.3333 \% \\ \hline
+					Logistic & 92.1569 \% \\ \hline
+					RandomForest & 96.0784 \% \\ \hline
+							
+				\multicolumn{2}{c}{\bf Diabetes datset} \\ \hline
+					J48 & 76.2452 \% \\ \hline
+					k-NN & 72.7969 \% \\ \hline
+					SMO  & 79.3103 \% \\ \hline
+					MultilayerPerceptron & 74.3295\\ \hline
+					SimpleLogistic & 79.3103 \%	\\ \hline
+					{\bf FT(trees)} & {\bf 80.8429 \%} \\ \hline
+					LMT(trees) & 79.3103 \% \\ \hline
+					DMNBtext & 68.1992 \% \\ \hline
+					{\bf Logistic} & {\bf 80.0766 \%} \\ \hline
+					RandomForest & 77.0115 \% \\ \hline
+
+				\multicolumn{2}{c}{\bf Spambase dataset} \\ \hline
+					J48 &92.1995 \% \\ \hline
+					k-NN & 89.0026 \% \\ \hline
+					SMO & 90.5371 \% \\ \hline
+					MultilayerPerceptron & (too much time) \\ \hline
+					SimpleLogistic & 92.5831 \% \\ \hline
+					{\bf FT(trees)} & {\bf 93.3504 \%} \\ \hline
+					LMT(trees) & 92.6471 \% \\ \hline
+					{\bf DMNBtext } & {\bf 93.2864 \%} \\ \hline
+					Logistic & 92.9028 \% \\ \hline
+					{\bf RandomForest} & {\bf 94.3734 \%} \\ \hline	
+
+			\end{tabular}
+		\end{table}
+
