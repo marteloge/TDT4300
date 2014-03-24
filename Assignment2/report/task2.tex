@@ -1,0 +1,61 @@
+\section{Apriori Rule Generation}
+
+	In this section we will list the results from the running algorithms
+	with both data sets.
+
+	\begin{table}[H]
+		\begin{tabular}{| l | l | l |}
+			\hline
+			Rules big data set & Confidence & Support \\ \hline
+			\{fruit\} $\Rightarrow$ \{baking needs\}  & 0.641 & 0.41 \\
+			\{baking needs\} $\Rightarrow$ \{fruit\}  & 0.679  & 0.41 \\
+			\{baking needs\} $\Rightarrow$ \{bread and cake\}  & 0.783  & 0.473 \\
+			\{baking needs\} $\Rightarrow$ \{milk-cream\}  & 0.682  & 0.412 \\
+			\{baking needs\} $\Rightarrow$ \{vegetables\}  & 0.697  & 0.421 \\
+			\{biscuits\} $\Rightarrow$ \{bread and cake\}  & 0.799  & 0.45 \\
+			\{bread and cake\} $\Rightarrow$ \{biscuits\}  & 0.625  & 0.45 \\
+			\{bread and cake\} $\Rightarrow$ \{baking needs\}  & 0.657  & 0.473 \\
+			\{bread and cake\} $\Rightarrow$ \{fruit\}  & 0.698  & 0.502 \\
+			\{bread and cake\} $\Rightarrow$ \{frozen foods\}  & 0.639  & 0.46 \\ 
+			\{bread and cake\} $\Rightarrow$ \{juice-sat-cord-ms\}  & 0.561  & 0.404 \\
+			\{bread and cake\} $\Rightarrow$ \{vegetables\}  & 0.69  & 0.496 \\
+			\{bread and cake\} $\Rightarrow$ \{milk-cream\}  & 0.702  & 0.505 \\
+			\{fruit\} $\Rightarrow$ \{bread and cake\}  & 0.785  & 0.5 \\
+			\{fruit\} $\Rightarrow$ \{frozen foods\}  & 0.628  & 0.402 \\
+			\{fruit\} $\Rightarrow$ \{vegetables\}  & 0.745  & 0.477 \\
+			\{fruit\} $\Rightarrow$ \{milk-cream\}  & 0.688  & 0.44 \\
+			\{frozen foods\} $\Rightarrow$ \{fruit\}  & 0.684  & 0.402 \\
+			\{frozen foods\} $\Rightarrow$ \{bread and cake\}  & 0.783  & 0.46 \\
+			\{frozen foods\} $\Rightarrow$ \{vegetables\}  & 0.692  & 0.406 \\
+			\{juice-sat-cord-ms\} $\Rightarrow$ \{bread and cake\}  & 0.759 & 0.404 \\
+			\{milk-cream\} $\Rightarrow$ \{bread and cake\}  & 0.795  & 0.505 \\ 
+			\{milk-cream\} $\Rightarrow$ \{baking needs\}  & 0.648  & 0.412 \\
+			\{milk-cream\} $\Rightarrow$ \{fruit\}  & 0.693  & 0.44 \\
+			\{milk-cream\} $\Rightarrow$ \{vegetables\}  & 0.689  & 0.437 \\
+			\{vegetables\} $\Rightarrow$ \{baking needs\}  & 0.658  & 0.421 \\
+			\{vegetables\} $\Rightarrow$ \{bread and cake\}  & 0.776  & 0.496 \\
+			\{vegetables\} $\Rightarrow$ \{frozen foods\}  & 0.635  & 0.406 \\
+			\{vegetables\} $\Rightarrow$ \{fruit\}  & 0.745  & 0.477 \\
+			\{vegetables\} $\Rightarrow$ \{milk-cream\}  & 0.683  & 0.437 \\
+			\hline
+		\end{tabular}
+	\end{table}
+
+	\begin{table}[H]
+		\begin{tabular}{| l | l | l |}
+			\hline
+			Rules small data set & Confidence & Support \\ \hline
+			\{diapers\} $\Rightarrow$ \{beer\} 	& 0.6 	& 0.5 \\ 
+			\{beer\} $\Rightarrow$ \{diapers\} 	& 1.0  	& 0.5 \\
+			\{milk\} $\Rightarrow$ \{bread\} 	& 0.799 & 0.66 \\
+			\{bread\} $\Rightarrow$ \{milk\} 	& 0.799 & 0.66 \\
+			\{diapers\} $\Rightarrow$ \{bread\}  & 0.799 & 0.66 \\
+			\{bread\} $\Rightarrow$ \{diapers\} 	& 0.799 & 0.66 \\
+			\{milk\} $\Rightarrow$ \{diapers\} 	& 0.799 & 0.66 \\
+			\{diapers\} $\Rightarrow$ \{milk\} 	& 0.799 & 0.66 \\
+			\{diapers, milk\} $\Rightarrow$ \{bread\} & 0.75 & 0.5 \\
+			\{bread, milk\} $\Rightarrow$ \{diapers\} & 0.75 & 0.5 \\
+			\{bread, diapers\} $\Rightarrow$ \{milk\} & 0.75 & 0.5 \\
+			\hline
+		\end{tabular}
+	\end{table}
