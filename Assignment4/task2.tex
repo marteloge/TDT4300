@@ -216,9 +216,26 @@
 			are seperated from one another by regions of low density. 
 			
 			\item {\bf Noisy data collection (200 instances, 3 dimensions):}
+			If the data set has loads of noise it will be sufficient with a clustering algorithm where the algorithm isnt dependent on the noise factor. Therefore HAC would be a sufficient choice for this purpose.
 
 			\item {\bf Data collection with only little noise, with taxonimy-like relations in 
 			between some of the instances (ca 400 instances, around 20 dimensions):}
+			By running k-means multiple times on this quite small data set we can achieve a quite fast
+			running algorithm with a satisfying result. 
+			Here the keyword is to run the data set multiple times. Some pros:\\
+			
+			\begin{itemize}
+			\item Simple algorithm
+			\item It is fast to use if it is on low dimensional data
+			\item If there is spesified a lagre nuber of clusters it can find pure sub clusters
+			\end{itemize}
+
+			Cons:\\
+			\begin{itemize}
+			\item K-means is not able to handle non-global data that has different sizes and densities
+			\item The algortihm are not able to identify outliers
+			\item It is restricted to all data that has the notion of centroid
+			\end{itemize}
 
 		\end{itemize}
 
