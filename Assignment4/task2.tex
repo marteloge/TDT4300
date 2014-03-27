@@ -212,14 +212,43 @@
 		
 		\begin{itemize}
 			\item {\bf Text collection (100.000 documents, 30.000 dimensions/distinct words):}
-			DBSCAN would fit this data set because it is good at locating regions of high density that
-			are seperated from one another by regions of low density. 
+			By running k-means multiple times on this quite small data set we can achieve a quite fast
+			running algorithm with a satisfying result. 
+			Here the keyword is to run the data set multiple times. Some pros:\\
+			
+			\begin{itemize}
+			\item Simple algorithm
+			\item It is fast to use if it is on low dimensional data
+			\item If there is spesified a lagre nuber of clusters it can find pure sub clusters
+			\end{itemize}
+
+			Cons:\\
+			\begin{itemize}
+			\item K-means is not able to handle non-global data that has different sizes and densities
+			\item The algortihm are not able to identify outliers
+			\item It is restricted to all data that has the notion of centroid
+			\end{itemize}
 			
 			\item {\bf Noisy data collection (200 instances, 3 dimensions):}
-
+			DBSCAN would fit this data set because it is good at locating regions of high density that
+			are seperated from one another by regions of low density. DBSCAN is also resistant against
+			noise and can handle clusters with different shapes and sizes. On the other hand is DBSCAN not very good on 
+			handling varying density and high dimensional data. 
+			
 			\item {\bf Data collection with only little noise, with taxonimy-like relations in 
 			between some of the instances (ca 400 instances, around 20 dimensions):}
+				HAC would be a sufficient choice for this purpose. 
+			Pros for HAC is that it generates the whole hirarchy and makes no assumptions about the form of the clusters. Cons
+			is that it is bad on handling high-dimentional spaces where no points are close to eachother.
 
+		\end{itemize}
+		
+		The plot:
+		\begin{itemize}
+		\item left: HAC 
+		\item middle: K-means
+		\item right: BDSCAN, detects clusters based on proximity.
+		\item bottom: HAC with min-link would create three clusters with linkage by proximity and it would be quit fast as well. 
 		\end{itemize}
 
 		\noindent\makebox[\linewidth]{\rule{\textwidth}{1pt}} 
