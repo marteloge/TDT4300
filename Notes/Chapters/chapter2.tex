@@ -2,7 +2,9 @@
 \clearpage
 
 \section{Types of Data}
-	
+	{\bf What is data?:} a collection of data objects and is attributes. Attributes
+	is the properties of an object. A collection of attributes describes a object. 
+
 	\begin{itemize}
 		\item {\bf Data set: } collection of data objects.
 		\item {\bf Data Objets: } often called record, point, vector, pattern, event, case,
@@ -19,7 +21,7 @@
 		{\bf type of a measurement scale}.
 	\end{itemize}
 
-	\subsection*{Types of Attributes}
+	\subsection{Types of Attributes}
 	{\bf Categorical types (Qualitative):} Nominal and Ordinal
 
 	{\bf Numeric types (Quantitative):} Interval and Ratio
@@ -29,7 +31,7 @@
 		\end{figure}
 
 	\clearpage
-	\subsection*{Transformations}
+	\subsection{Transformations}
 
 		The types of attributes can be described in terms of transformations that
 		do not change the meaning of an attribute. 
@@ -38,7 +40,7 @@
 			\includegraphics[width=\textwidth]{pics/transformations.png}
 		\end{figure}
 
-	\subsection*{Attributes by the Number of Values}
+	\subsection{Attributes by the Number of Values}
 
 	An independent way of distinguishing between attributes is by the number of values
 	they can take.
@@ -56,9 +58,7 @@
 	\end{itemize}
 
 	\clearpage
-	\section{Type of Data Sets}
-
-		\subsection*{General Characteristics of Data Sets}
+	\section{General Characteristics of Data Sets}
 			\begin{itemize}
 				\item {\bf Dimensionality:} is the number of attributes that the object in the 
 				class set possess.
@@ -72,10 +72,17 @@
 				on the level of resolution. Too fine will might hide the pattern or be buried in noise if
 				to uneven. 
 			\end{itemize}
-
+	
+	\section{Type of Data Sets}
+		\begin{itemize}
+			\item {\bf Post (record):} Data-matrix, Document data, Transaction data 
+			\item {\bf Graph:} World wide web (HTML)
+			\item {\bf Ordered:} Sequential Data (temporal data), Sequence Data, Time Series Data,
+			Spatial Data
+		\end{itemize}
 
 		\clearpage
-		\subsection*{Record Data}
+		\subsection{Record Data}
 		Much data mining work assumes that the data set is a collection of records (data objects), each of which consists of a fixed set of data fields (attributes).
 			\begin{itemize}
 				\item {\bf Transactions or Market Basket Data:} transaction data is a sepecial type of record
@@ -105,7 +112,7 @@
 			\includegraphics[scale=0.5]{pics/DocumentTermMatrix.png}
 		\end{figure}
 
-		\subsection*{Graph-Based Data}
+		\subsection{Graph-Based Data}
 			\begin{itemize}
 				\item {\bf Data with Relationships among Objects:} the relationships among objects frequently convey important information. In such cases, the data is often represented as a graph. In 
 				particular, the data objects are mapped to nodes of the graph, while the relationships among
@@ -115,7 +122,7 @@
 			\end{itemize}
 
 		\clearpage
-		\subsection*{Ordered Data}
+		\subsection{Ordered Data}
 		For some types of data, the attributes have relationships that involve order in time or space. 
 			\begin{itemize}
 				\item {\bf Sequential Data (temporal data):} can be thought of as an extension of record data, 
@@ -219,7 +226,7 @@
 
 \section{Data Preprocessing}
 	
-	\subsection*{Aggregation}
+	\subsection{Aggregation}
 		\begin{itemize}
 			\item Sometimes {\bf "less is more"} and this is the case with aggregation, 
 			the combining of two or more objects into a single object. 
@@ -239,7 +246,7 @@
 			week has the highest sales. 
 		\end{itemize}
 
-	\subsection*{Sampling}
+	\subsection{Sampling}
 		\begin{itemize}
 			\item {\bf Sampling} is a commonly used approach for selecting a subset of the data 
 			objects to be analyzed. To analyze a full data set if often too expensive or 
@@ -286,7 +293,7 @@
 				\end{itemize}			
 		\end{itemize}
 
-	\subsection*{Dimensionality reduction}
+	\subsection{Dimensionality reduction}
 		\begin{itemize}
 			\item Example of data sets with a high dimentionality is a object with many
 			attributes like a document object where each word in the document is an 
@@ -324,7 +331,7 @@
 		\end{itemize}
 
 	\clearpage
-	\subsection*{Feature subset selection}
+	\subsection{Feature subset selection}
 		\begin{itemize}
 			\item A way to reduce the dimensionality is to use only a subset of the 
 			features.
@@ -356,7 +363,7 @@
 			features are given a lower weight. 
 		\end{itemize}
 
-	\subsection*{Feature creation}
+	\subsection{Feature creation}
 		\begin{itemize}
 			\item It is frequently possible to create, from the original attributes, a new set
 			of attributes that captures the important information in a data set much more
@@ -370,7 +377,7 @@
 			can be more useful than the original features. 
 		\end{itemize}
 
-	\subsection*{Discretization and binarization}
+	\subsection{Discretization and binarization}
 		\begin{itemize}
 			\item Some data mining algorithms, especially certain classification algorithms, 
 			require that the data be in the form of categorical attributes. 
@@ -382,7 +389,7 @@
 			to reduce the number of categories by combining some of the values. 
 		\end{itemize}
 
-	\subsection*{Variable transformation}
+	\subsection{Variable transformation}
 		\begin{itemize}
 			\item A {\bf variable transformation} refers to a transformation that is applied to
 			all the values of a variable. 
@@ -410,7 +417,7 @@
 		such as [0, 1].
 	\end{itemize}
 
-	\subsection*{Similarity and Dissimilarity between Simple Attributes}
+	\subsection{Similarity and Dissimilarity between Simple Attributes}
 
 		\begin{itemize}
 			\item{\bf Nominal:} since nominal attributes only convey information about
@@ -430,7 +437,7 @@
 		\end{figure}
 
 	
-	\subsection*{Dissimilarities between Data Objects}
+	\subsection{Dissimilarities between Data Objects}
 
 	{\bf Euclidean distance:} The euclidean distance, d, between two points, x and y,
 	in one-, two-, three-, or higher dimensional space, is given by the following formula:
@@ -513,7 +520,7 @@
 		\caption{(a) $L_{1}$ distance matrix, (b) $L_{\infty}$ distance matrix}
 	\end{table}
 
-\subsection*{Similarities between Data Objects}
+\subsection{Similarities between Data Objects}
 	If s(x,y) is the similarity between points x and y, then the typical properties
 	of similarities are the following:
 		\begin{enumerate}
@@ -521,7 +528,8 @@
 			\item s(x,y) = s(y,x) for all x anf y. (Symmetry)
 		\end{enumerate}
 
-\subsection*{Examples}
+\clearpage
+\subsection{Examples}
 
 	{\bf Similarity Measures of Binary Data:}
 

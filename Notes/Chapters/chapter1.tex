@@ -19,6 +19,10 @@
 	\end{tabular}
 	\end{table}	
 
+	{\bf Data mining vs. Datawarehouse:} Unknown vs. unknown information. 
+	In data mining we are looking for unknown information (knowledge discovery) in known data. 
+	In datawarehouse we are looking at known information. 
+
 	{\bf Knowledge Discovery in Databases (KDD): } is the overall process of converting raw 
 	data into useful information. 
 
@@ -80,27 +84,22 @@
 	\end{itemize}
 
 \clearpage
-\section{The Origins of Data Mining}
-
-	Data mining as a confluence of many disciplines:
-
-	\begin{figure}[H]
-		\includegraphics[scale=0.3]{pics/disciplinesDataMining.png}
-	\end{figure}
-
 \section{Data Mining Tasks}
 	
-	Data mining tasks are generally divided into:
+	{\bf Data mining tasks are generally divided into:}
 
-	{\bf Descriptive tasks:} The objective of these tasks is to predict the value of a particular 
-	attribute based on the values of other attributes. The attribute to be predicted is commonly 
-	known as the {\bf target} or {\bf dependent variable}, while the attributes used for making the
-	prediction are known as the {\bf explanatoy} or {\bf independent variables}. 
-
-	{\bf Predictive tasks:} Here, the objective is to derive patterns (correlations, trends, custers, 
-	trajectories, and anomalies) that summarize the undelying relationships in data. Descriptive 
-	data mining tasks are often exploratory in nature and frequently require postprocessing tecniques
-	to validate and explain the results. 
+	\begin{itemize}
+		\item {\bf Descriptive tasks:} The objective of these tasks is to predict 
+		the value of a particular attribute based on the values of other attributes. 
+		The attribute to be predicted is commonly known as the {\bf target} or 
+		{\bf dependent variable}, while the attributes used for making the prediction are 
+		known as the {\bf explanatoy} or {\bf independent variables}. 
+		{\bf Examples: }{\color{blue} Classification, regression, anomalies detection} 
+		\item {\bf Predictive tasks:} Here, the objective is to derive patterns 
+		(correlations, trends, custers, trajectories, and anomalies) that summarize the undelying relationships in data. Descriptive data mining tasks are often exploratory in nature 
+		and frequently require postprocessing tecniques to validate and explain the results. 
+		{\bf Examples:} {\color{blue}Clustering, association rules and sequence patterns.}
+	\end{itemize}
 
 	{\bf The core data mining tasks:}
 	\begin{itemize}
@@ -117,8 +116,35 @@
 		\item {\bf Association Analysis:} is used to discover patterns that describe strongly
 		associated features in the data. The discovered patterns are typically represented in the 
 		form of implication rules or feature subsets. 
-
 	\end{itemize}
+
+	\begin{figure}[H]
+		\centering
+		\subfigure{
+			\includegraphics[scale=0.5]{pics/association.png}
+		}
+		\subfigure{
+			\includegraphics[scale=0.6]{pics/cluster.png}
+		}
+		\subfigure{
+			\includegraphics[scale=0.5]{pics/classification.png}
+		}
+		\subfigure{
+			\includegraphics[scale=0.6]{pics/anomlay.png}
+		}
+		\caption{Association analysis, cluster analysis, classification (predictive) 
+		and anomaly detction}
+	\end{figure}
+
+\section{The Origins of Data Mining}
+
+	Data mining as a confluence of many disciplines:
+
+	\begin{figure}[H]
+		\includegraphics[scale=0.3]{pics/disciplinesDataMining.png}
+	\end{figure}
+
+
 
 	
 

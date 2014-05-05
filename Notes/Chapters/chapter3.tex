@@ -1,2 +1,138 @@
 \chapter{Exploring Data}
+	
+	\clearpage
+	{\bf Summary Statistics:} 
 
+	Are quantiles, such as the mean
+	and standard deviation, that capture various characteristics of a 
+	potentially large set of values with a single number or a small set
+	of numbers. 
+
+	{\bf Frequencies and the Mode:} 
+
+	The Mode of a categorical attribute is the value that has the highest frequency.
+	The frequency of a value is defined by:	
+	\begin{equation}
+		frequency(v_{i}) = \frac{number of objects with attribute value v_{i}}{total objects}
+	\end{equation}  
+
+	{\bf Percentiles:}
+
+	{\bf Mean and Median:}
+
+	For continupus data, two of the most widley used summary statistics are the mean
+	and the median, which are measures of the location of a set of values.
+
+	\begin{equation}
+		mean(x) = \overline{x} = \frac{1}{m} \sum_{i=1}^{m} x_i
+	\end{equation}
+
+	{\bf Range and Variance}
+
+	\begin{equation}
+		range(x) = max(x) - min(x) = x_{m} - x_{1}
+	\end{equation}	
+
+	\begin{equation}
+		variance(x) = s_{x}^{2} = \frac{1}{m - 1}\sum_{i=1}^{m} (x_{i} - \overline{x})^{2}
+	\end{equation}	
+
+	{\bf ADD, MAD and IQR}
+
+	sometimes do we need a more robust estimate of the spread of a set because of outliners.
+	Here are some alternatives:
+
+		\begin{equation}
+			ADD(x) = Absolute Average Deviation = \frac{1}{m} \sum_{i=1}^{m} |x_{i} - \overline{x}|
+		\end{equation}
+
+		\begin{equation}
+			MAD(x) = Median Absolute Deviation = median (\{|x_{1} -\overline{x}|, ..... , 
+			|x_{m} -\overline{x}|\})
+		\end{equation}
+
+		\begin{equation}
+			interquartile range(x) = x_{75\%} - x_{25\%}
+		\end{equation}
+
+	{\bf Multivariate Symmary Statistics}
+
+		\begin{equation}
+			covariance(x_{i}, x_{j}) = \frac{1}{1 - m} \sum_{k=1}^{m} (x_{ki} - \overline{x_{i}})(x_{kj} -
+			 \overline{x_{j}}) 
+		\end{equation}
+
+		\begin{equation}
+			correlation(x_{i}, x_{j}) = \frac{covariance(x_{i}, x_{j})}{s_{i}s_{j}}
+		\end{equation}
+
+	\clearpage
+	\section{Visualization}
+
+	The use of visualization techniques in data mining is refferred to as 
+	{\bf visual data mining}.
+
+	The overriding motivation for using visualization is that people can quickly absorb
+	large amounts of visual information and find patterns in it. 
+
+	\subsection{General Concepts}
+		{\bf Representation: Mapping Data to Graphical Elements}
+
+		{\bf Arrangements}
+
+		{\bf Selection}
+
+	\subsection{Techniques}
+
+		{\bf Visualizing Small Numbers of Attributes}
+
+		{\bf Stem and Leaf Plots}
+
+		{\bf Histograms}
+
+		{\bf Box Plots}
+
+		{\bf Pie Chart}
+
+		{\bf Scatter Plots}
+
+		{\bf Contour Plots}
+
+		{\bf Surface Plots}
+
+		{\bf Vector Field Plots}
+
+		{\bf Animation}
+
+	\subsection{Visualizing Higer-Dimensional Data}
+		{\bf Metrices}
+
+		{\bf Parallel Coordinates}
+
+		{\bf Star Coordinates and Chernoff Faces}
+
+	\subsection{Do's and Don'ts}
+
+		{\bf ACCENT Principles:} 
+			\begin{itemize}
+				\item {\bf Apprehension:}
+				\item {\bf Clarity:}
+				\item {\bf Consistency:}
+				\item{\bf Efficiency:}
+				\item {\bf Necessity:}
+				\item {\bf Truthfulness:}
+			\end{itemize}
+
+		{\bf Tufte's Guidelines}
+			\begin{itemize}
+				\item Graphical excellence is the well-designed presentation of
+				interesting data a matter of substance, of statistics, and of design.
+				\item GRaphical exellence consists of complex ideas communicated 
+				with clarity, precision, and efficiency.
+				\item Graphical excellence is that which gives to the viewer the greatest
+				number of ideas in the shortest time with the least ink in the smallest space.
+				\item Graphical excellence is nearly always multivariate
+				\item And graphical excellence requires telling the truth about the data.
+			\end{itemize}
+
+	\section{OLAP and Multidimensional Data Analysis}
