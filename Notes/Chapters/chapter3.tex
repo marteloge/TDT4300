@@ -136,3 +136,74 @@
 			\end{itemize}
 
 	\section{OLAP and Multidimensional Data Analysis}
+
+		Whats important are the insights can be gained by looking at data from
+		a multidimentional viewpoint.
+		The starting point is usually a tabular representation of the data, such 
+		as a {\bf fact table}. 
+
+		Two steps are necessary in order to represent data as a multidimentional 
+		array:
+			\begin{enumerate}
+				\item identification of the dimensions
+				\item identification of an attribute that is the focus of the analysis.
+			\end{enumerate}
+
+		The values of an attribute seve as indices into the array for the dimension
+		corresponding to the attribute, and the number of attribute values in the size
+		of that dimension. 
+
+		The content of each cell represents the value of a {\bf taget quantity} that
+		we are interested in analyzing.
+
+		\subsection{Analyzing Multidimensional Data}
+
+		The key motivation for taking a multidimensional viewpoiint of data is the 
+		importance of aggregating data in various ways. 
+
+		A multidimensional representation of the data, together with all possible totals
+		(aggregates), is known as a {\bf data cube}.
+		A data cube may have either more or fewer than three dimensions. A data cube
+		is a generalization of what is known in statistical terminology as a 
+		{\bf cross-tabulation}.
+
+		{\bf Dimensionality Reduction and Pivoting:}
+		\begin{itemize}
+			\item {\bf Aggregation} can be viewed as a form of aggregation.
+			\item{\bf Pivoting} refers to aggregating over all dimensions except two. The
+			result is a two-dimensional cross tabulation with the two specified dimensions
+			as the only remaining dimensions. 
+		\end{itemize}
+
+		{\bf Slicing and Dicing}
+
+			\begin{itemize}
+				\item {\bf Slicing} is selecting a group of cells from the entire 
+				multidimensional array by specifying a specific value for one or more
+				dimensions.
+				\item {\bf Dicing} involves seleccting a subset of cells by specifying a 
+				range of attribute values. This is equivalent to defining a subarray
+				from the complete array. In practice, both operations can also be accompanied
+				by aggregation over some dimensions. 
+			\end{itemize}			
+
+
+		{\bf Roll-Up and Drill-Down}
+
+			Categories (attributes) can often be organized as a hierarchical tree or lattice.
+			For instance, years consist of months and weeks, both of which consist of days.
+			Locations can be divided into nations, which contains states, which in turn
+			contains cities. Likewise of products can be further subdivided. For example,
+			the product category, funiture, can be subdivided into the subcategories,
+			chairs, tables, sofas, etc. This hierchical structure gives rise to  the 
+			roll-up and drill-down operations. To illustrate, starting with the original
+			sales data, which is a multidimensional array with entries for each date,
+			we can aggregate {\bf (roll-up)} the sales across all the dates in a month. 
+			Conversely, given a representation of the data where the times dimensions are
+			broken into months, we might want to split the monthly sales totals 
+			{\bf (drill-down)} into daily sales. 
+
+			Thus, roll-up and drill-down operations are related to aggregation. Notice, 
+			however, that they differ from the aggregation operations from last section
+			because they aggregate cells within a dimension, not across the entire  dimension. 
+			
