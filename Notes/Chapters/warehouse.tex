@@ -516,5 +516,207 @@
 		knowledge/results in different forms. This is a build in feature in data warehouse
 		with OLAP operations as well as the visualisation possibilities of multidimensional data.
 
-		
+\clearpage
+\section{Data Warehouse Implementation}
+
+	\subsection{Efficient Data Cube Computation}
+
+		\subsection*{The {\it compute cube} Operator and the Curse of Dimensionality}
+
+		The {\it compute cube} operator computes aggregates over all subsets of the 
+		dimensions specified in the operation.
+
+		A data cube is a lattice of cuboids. Suppose that you want to create a data cube
+		that contains {\it city, item, year} and {\it sales\_in\_dollars}. You want to
+		do queries like: "compute the sum of sales, grouping by city and item",
+		"compute the sum of sales, grouping by city", and "compute the sum of sales grouping by item".
+
+		What is the total number of cuboids, or group-by's, that can be computed for this
+		data cube? Taking three attributes, {\it city, item}, and {\it year}, as the dimensions
+		for the data cube, {\it sales\_in\_dollars} as the measure, the total number of 
+		cuboids, or group-by's, that can be computed for this data cube is $2^{3}$=8. The
+		possible group-by's are the following: \{({\it city, item, year}), ({\it city, item}),
+		({\it city, year}), ({\it item, year}), ({\it city}), ({\it item}, ({\it year}), ()\}
+		These group-by's form a lattice of cuboids for the data cube (figure below).
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.5]{pics/groupby.png}
+		\end{figure}
+
+		The {\bf base cuboid} contains all three dimensions, {\it city, item,} and {\it year}.
+		It can return the total sales for any combination of the three dimensions.
+		The {\bf apex cuboid}, or 0D cuboid, refers to the case where group-by is {\bf empty}.
+
+		Here are some examples:
+
+		{\bf define cube sales\_cube $[$ city, item, year $]$ : sum(sales\_in\_dollars)}
+
+		{\bf compute cube sales\_cube}
+
+		The last one will aggregate cuboids for all eight subsets, including the empty subset. 
+	
+	\clearpage
+		\subsection*{Curse of Dimensionality}
+		The storage requirements are excessive when many of the dimensions have associated concept
+		hierarchies, each with multiple levels. 
+		This problem is referred to as the {\bf curse of dimensionality}.
+
+		"How many cuboids are there in an n-dimensional data cube?" If there where no hierarchies
+		associated with each dimension, then the total number of cuboids for an n-dimensional
+		data cube, as we have seen, is $2^{n}$. However, in practice, many dimensions do have
+		hierarchies. For example {\it time} is usually explored not at only one conceptual
+		level, but rather at multiple conceptual levels such as day, month, quarter and year. 
+
+		For an n-dimensional data cube, the total number of cuboids that can be generated is:
+
+		\begin{equation}
+			Total Number Of Cuboids = \prod_{i=1}^{n} (L_{i} + 1)
+		\end{equation}
+
+		where $L_{i}$ is the number of levels associated with dimension i. One is added to $L_{i}$
+		to include the virtual top level, {\it all}.
+		If a cube has 10 dimensions and each dimension has 5 levels (including all), the total
+		number of cuboids that can be generated is $5^{10}$ = 9.8 x $10^{6}$. 
+
+		\subsection{Partial Materialization: Selected Computation of Cuboids}
+
+		{\bf No materialization:} do not precompute any of the "nonbase" cuboids. This leads
+		to computing expensive multidimensional aggregate on-the-fly, which can be extremely slow. 
+
+		{\bf Full materialization:} precomputes all of the cuboids. The resulting lattice 
+		of cimputed cuboids is referred to as the full cube. This choice typically requires 
+		huge amount of memory space in order to store all of the precomputed cuboids.
+
+		{\bf Partial materialization:} selectively compute proper subsets of the whole set of
+		possible cuboids. Alternatively, we may compute a subset of the cube, which contains
+		only those cells that satisfy some user-specified criterion.
+
+		({\bf Iceberg cube:} is data cube that stores only those cube cells with aggregate 
+		value (e.g., count) that is above somm minimum support threshold.)
+
+	\clearpage
+	\subsection{Indexing OLAP Data: Bitmap Index and Join Index}
+
+		To facilitate efficient data accessing, most data warehouse systems support index
+		structures and materialized views. We will in this section examine how to index
+		OLAP data by bitmap indexing and join indexing. 
+
+		\subsection*{Bitmap Indexing}
+
+			The bitmap indexing method is popular in OLAP products beacuse it allows quick
+			searching in data cubes. The bitmap index is an alternative representation
+			of the {\it record\_value (RID)} list. In bitmap index for a given attribute, 
+			there is a distinct bit vector, {\bf Bv}, for each value v in the attribute's domain.
+			If a given attribute's domain consists of n values, then n bits are needed for each
+			entry in the bitmap index (i.e., there are n bit vectors). If the attribute has the 
+			value v for a given row in the data table, then the bit representing that value is
+			set to 1 in the corresponding row of the bitmap index. All other bits for that row
+			is set to 0. 
+
+			The figure below shows a base (data) table containing the dimensions {\it item} and
+			{\it city}, and its mapping to bitmap index tables for each of the dimensions. 
+			
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.5]{pics/bitmap.png}
+				\caption{Indexing OLAP data using bitmap indices}
+			\end{figure} 
+
+		\clearpage
+		\subsection*{Join Indexing}
+
+			Join indexing registers the joinable rows of two relations from a 
+			relational database.  For example, if two relations R(RID, A) and S(B, SID) join
+			on the attributes A and B, then the join index record contains the pair
+			(RID, SID), where RID and SID are record identifiers from the R and S relations, 
+			respectively. 
+
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.5]{pics/join1.png}
+				\caption{Linkages between a sales fact table and location and item dimension tables}
+			\end{figure} 
+
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.5]{pics/join2.png}
+				\caption{Join index tables based on the linkage between the sales fact table and 
+				the location and item dimenstion tables in the previous figure.}
+			\end{figure} 
+
+	\clearpage
+	\subsection{Efficient Processing of OLAP Queries}
+
+		The purpose of materializing cuboids and constructing OLAP index structures is to
+		speed up query processing in data cubes. Given materialized views, query processing
+		should be proceed as follows:
+
+			\begin{enumerate}
+				\item {\bf Determine which operations should be performed on the available cuboids:}
+				\item {\bf Determine to which materialized cuboid(s) the relevant operations should
+				be applied.}
+			\end{enumerate}
+
+		\subsection*{Example} 
+		Suppose that we define a data cube for {\it AllElectronics} of the form
+
+		{\it sales\_cube $[$ time, item, location $]$}: sum({\it sales\_in\_dollars}).
+
+		The dimensions hierarchies used are:
+			\begin{itemize}
+				\item For time: {\it day $<$ month $<$ quarter $<$ year}
+				\item For item: {\it item\_name $<$ brand $<$ type}
+				\item For location: {\it street $<$ city $<$ province\_or\_state}
+			\end{itemize}
+
+		Suppose that the query to be processed is on \{{\it brand, province\_or\_state}\},
+		which the selection constant "{\it year} = 2010". Also suppose that there are four
+		materialized cuboids available:
+
+		\begin{enumerate}
+			\item \{{\it year, item\_name, city}\}
+			\item \{{\it year, brand, country}\}
+			\item \{{\it year, brand, province\_or\_state}\}
+			\item \{{\it item\_name, province\_or\_state}\}, where {\it year} = 2010
+		\end{enumerate}
+
+		{\bf Which of these four cuboids should be selected to process the query?}
+
+		\begin{itemize}
+			\item We will not choose cuboid 2 becuase {\it country} is a more general
+			concept than {\it province\_or\_state}.
+			\item Cuboids 1, 3 and 4 can be used to process the query becuase (1) they have 
+			the same set or a superset of the dimensions in the query, (2) the selection clause
+			in the query can imply the selection in the cuboid, and (3) the abstraction levels
+			for the {\it item} and {\it location} dimensions in these cuboids are at a finer 
+			level than {\it brand} and {\it province\_or\_state}, respectively.
+		\end{itemize}
+
+		{\bf How would the cost of each cuboid compare if used to process the query?}
+
+		It is likely that cuboid 1 would cost the most because both {\it item\_name}
+		and {\it city} are at a lower level than {\it brand} and {\it province\_or\_state}
+		concepts specified in the query. If there are not many {\it year} values associated with {\it items} 
+		in the cube, but there are several item names for each brand, then cuboid 3 will be smaller 
+		than cuboid 4, and thus cuboid 3 should be chosen to process the query. 
+		However, if efficient indices are available for cuboid 4, then cuboid 4 may be a better choice. 
+		Therefore, some cost-based estimation is required to decide which set of cuboids should 
+		be selected for query processing.
+
+	\clearpage
+	\subsection{OLAP Server Architectures: ROLAP vs. MOLAP vs. HOLAP}
+
+		{\color{red} \Large Viktig ????}
+
+		\subsection*{Relational OLAP (ROLAP) servers}
+
+		\subsection*{Multidimensional OLAP (MOLAP) servers}
+
+		\subsection*{Hybrid OLAP (HOLAP) servers}
+
+		\subsection*{Specialized SQL servers}
+
+
+
 
