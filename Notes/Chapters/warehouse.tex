@@ -212,12 +212,230 @@
 
 \section{Data Warehouse Modelling: Data Cube and OLAP}
 	
+	Data warehouses and OLAP tools are based on a {\bf multidimentional data model}. This
+	model views data in the form of a {\bf data cube}.
+	
 	\subsection{Data Cube: A Multidimensional Data Model}
+		{\it What is a data cube?} A {\bf data cube} allows data to be modeled and viewed 
+		in multiple dimensions. It is defined by dimensions and facts.
+
+		In general terms, {\bf dimensions} are the perspectives or entities with repect to
+		which an origanization wants to keep records. Each dimension may have a table 
+		associated with it, called a {\bf dimension table}, which further describes the
+		dimension. For example, a dimension table for item may contain the attributes
+		item\_name, brand, and type. 
+
+		A multidimensional data model is typically organized around a central theme, such
+		as sales. This theme, is represented by a fact table. Facts are numeric measures.
+		The {\bf fact table} contains the names of the facts, or measures, as well as keys
+		to each of the related dimension tables.
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.5]{pics/3D.png}
+			\caption{3-D view of sales data according to time, item, and location}
+		\end{figure}
+
+		A cuboid is a way to represent multidimensional data. Given a set of dimensions, 
+		The cuboid that holds the lowest level of summarization is called the {\bf base cuboid}.
+		The first cuboid below is a nonbase cuboid because it summarizes for all suppliers. 
+		\begin{figure}[H]
+			\subfigure{
+				\includegraphics[scale=0.42]{pics/cuboid1.png}
+			}
+			\subfigure{
+				\includegraphics[scale=0.42]{pics/cuboid2.png}
+			}
+			\caption{Nonbase cuboid and base cuboid}
+		\end{figure}
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.5]{pics/latticecuboid.png}
+			\caption{Lattice of cuboids}
+		\end{figure}
 
 	\subsection{Stars, Snowflakes, and Fact Constellations}
 
+		The entity-relationship (ER) data model is commonly used in the design of relational
+		databses, where a database schema consists of a set of entities and the relationships
+		between them.
+		A data warehouse, however, requires a consise, subject-oriented schema that facilitates
+		online data analysis. 
+
+		The most popular data model for a data warehouse is a multidimensional model,
+		which can exist in the for of a {\bf star schema}, a {\bf snowflake schema}, or
+		a {\bf fact constellation schema}. 
+
+		\subsection*{Star schema} 
+
+		The most common modeling paradigm is the star schema, in which
+		the data warehouse contains (1) a large central table ({\bf fact table}) containing
+		the keys from all dimensions and other aggegated/summarization measures, and (2)
+		a set of smaller attendant table ({\bf dimension tables}), one for each dimension.
+		Notice that in the star schema, each dimension is represented by only one table, and
+		each table contains a set of attributes. Since a dimension is only represented by one
+		table, it can occur {\bf redundancy} since there is {\bf no normalization}. 
+
+		\begin{figure}[H]
+			\centering
+				\includegraphics[scale=0.4]{pics/star.png}
+				\caption{Star schema}
+		\end{figure}
+
+	\clearpage
+		\subsection*{Snowflake schema} 
+
+		The snowflake schema is a variant of the star schema model, where some dimension
+		tables are normalized, therby further splitting the data into additional tables.
+		The major difference between the showflake and the star schema models is that the
+		dimension tables of the snowflake model may be kept in normalized form to reduce
+		redundancies, but the snowflake structure can reduce the effeciveness of browsing, 
+		since more joins will be needed to execute a query. 
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.4]{pics/snowflake.png}
+			\caption{Snowflake schema}
+		\end{figure}
+
+		\subsection*{Fact constellation/Galaxy schema}
+
+		Applications may require multiple fact tabels to share dimensio tables. This kind of
+		schema can be viewed as a collection of stars, and hence is called a {\bf galaxy schema}
+		or a {\bf fact constellation}. A fact constillation schema allows dimension tables to
+		be shared between fact tables. 
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.4]{pics/fact.png}
+			\caption{Fact constellation/Galaxy schema with two fact tables}
+		\end{figure}
+
+		\clearpage
+		\subsection*{The use of star, snowflake and galaxy schema}
+
+		In data warehousing the is a distiction between a data warehouse and a data mart. 
+
+		A {\bf data warehouse} collects information about
+		subjects than span the {\bf entire organization}, such as customers, items, sales, 
+		assets, and personnel, and thus its scope is {\bf enterprise wide.}
+		For data warehouse, the fact {\bf constellation/galaxy} schema is commonly used, since it can model
+		multiple, interrelated subjects. 
+
+		A {\bf data mart}, on the other hand, is a department subset of the data warehouse that 
+		focuses on selected subjects, and thus its scope is department-wide. For data marts, the
+		{\bf star} or {\bf snowflake} schema is commonly used, since both are geared toward 
+		modeling single subjects.
+
+
 	\subsection{Dimensions - Concept Hierarchies}
+
+		A {\bf concept hierarchy} defines a sequence of mappings from a set of low-level
+		concepts to higher-level, more general concepts. We can look at this as a 
+		ordering from high to low level. In the example below we have a {\bf total ordering}:
+		country - province/state - city. 
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.35]{pics/totalorder.png}
+			\caption{Concept hierarchy (total order)}
+		\end{figure}
+
+		Alternatively, the attributes of a dimension may be organized as a {\bf partial order}, 
+		forming a lattice. An example of a partial order for the time dimension based on 
+		the attributs day, week, month, quarter, and year are shown below.
+
+		A cencept hiearchy that is total or partial order among attributes in a database
+		schema is called a {\bf schema hierarchy}.
+		There may be more than one concept hierarchy for a given attribute or dimension., 
+		based on different user viewpoints.  
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.4]{pics/partialorder.png}
+			\caption{Concept hierarchy (partial order)}
+		\end{figure}
 
 	\subsection{Measures}
 
+		A data cube measure is a numeric function that can be evaluated at each point in the
+		data cube space. 
+
+		\subsection*{Distributive} 
+		
+		Suppose the data are partitioned into n sets. We apply a 
+		function to each partition, resulting in n aggregate values. If the result
+		derived by applying the function to the n aggregate values is the same as that 
+		derived by applying the function to the entire data set, the function can be
+		computed in a distributed manner. For example, sum() can be computed for 
+		a data cube by first partitioning the cube into a set of subcubes, computing 
+		sum() for each subcube, and then summing up the counts obtained for each subcube. 
+		{\bf sum()}, {\bf min()}, and {\bf max()} is distributeive aggregate functions.
+
+		A measure is distributive if it is obtained by applying a distributive aggregate
+		function. 
+
+		\subsection*{Algebraic} 
+
+		An aggregate function is algebraic if it can be computed by an algebraic function
+		with M aguments, each of which is obtained by applying a dristibutive aggregate function.
+		For example, {\bf avg()} can be computed by sum()/count(), where both sum() and 
+		count() are distributive aggregate functions. 
+		{\bf min\_N()}, {\bf max\_N()}, {\bf avg()}, and {\bf standard\_deviation()} are all 
+		algebraic aggregate functions. 
+
+		\subsection*{Holistic}
+
+		An aggregate function is  holistic if there is no constant bound on the storage
+		size needed to describe a subaggregate. Common examples of holistic functions include
+		{\bf median()}, {\bf mode()}, and {\bf rank()}.
+		A measure is holistic if it is obtained by applying a holistic aggregate function. 
+
 	\subsection{OLAP Operations}
+
+		\subsection*{Roll-up}
+
+			Performs aggregation on a data cube, either by climbing up a concept hierarchy
+			for a dimension or by {\bf dimension reduction}. In the figure we see that the roll-up
+			operation goes from city to the level of country (more abstraction).
+			When roll-up is performed by dimension reduction, one or more dimensions are 
+			removed from the given cube. 
+
+		\subsection*{Drill-down}
+
+			It navigates from less detailed data to more detailed data. Drill-down can be 
+			realized by either stepping down a concept hierarchy for a dimension or 
+			introducing additional dimensions. In the figure, the drill down goes from 
+			quarters to month (detailed to more detailed). 
+
+		\subsection*{Slice}
+
+			The slice operation performs a selection on {\bf one dimension} of the given 
+			cube, resulting in a subcube. The figure shows the slice operations by
+			choosing time = Q1. 
+
+		\subsection*{Dice}
+
+			The dice operation defines a subcube by performing a selection on {\bf two or more
+			dimensions}. In the figure, the dice operations chooses the following dimensions:
+			location = "Toronto" or "Vancouver", time = "Q1" or "Q2", and
+			item = "home entertainment" or "computer". 
+
+		\subsection*{Pivot(rotate)}
+
+			Pivot (also called rotate) is a visualization operation that rotates the data
+			axes in view to provide an alternative data presentation. In the figure, show
+			a pivot operation where item and location axes in a 2D slice are rotated. 
+			Other examples include rotating the axes of a 3D cube, or transforming a 
+			3D cube into a series of 2D plans. 
+
+		\subsection*{Other OLAP operations}
+
+			{\bf Drill-across} executes queries involving more than one fact table. 
+			{\bf Drill-through} operations uses relational SQL facilities to drill
+			through the bottom level of a cube down to its back-end relational tables. 
+
+	\begin{figure}[H]	
+		\includegraphics[width=\textwidth]{pics/operations.png}
+	\end{figure}
