@@ -1,0 +1,131 @@
+\chapter{Questions From the Lectures}
+
+	\section{Introduction}
+		\begin{enumerate}
+			\item Hva er datagruvedrift ("data mining")? Nevn eksempler på hva data mining er
+			og hva det ikke er. 
+			\item Hva er hovedhensiktene med data mining?
+			\item Forklar hensiktene med klassifisering og klyngedannelse, samt forskjellene
+			mellom disse. 
+			\item Hva er datavarehus?
+			\item Hvorfor er datavarehus nyttig? Nevn eksempler på datavarehusanvendelser.
+			\item Hva er forskjellene mellom data mining og datavarehus?
+			\item Forklar hvorfor vi trenger data cleaning og data integration..
+		\end{enumerate}
+
+	\section{Classification - part 2}
+
+		\begin{enumerate}
+			\item Hva er hovedhensiktene med klassifisering?
+				\begin{enumerate}
+					\item Gi eksempler for når klassifiseringen er nyttig (anvendelsesområde).
+					\item Hvorfor trenger vi treningsdata til klassifiseringen?
+				\end{enumerate}
+			\item Hvilke klassifiseringsteknikker finnes det?
+			\item Beslutningstre (Decision tree) er et eksempel på kassifiseringsmetode.
+			Forklar hvordan denne metoden fungerer.
+			\item Hvordan fungerer Hunt's algoritmen?
+				\begin{enumerate}
+					\item Forklar spesielt hvordan split utføres
+					\item Vis hvordan man kan gjøre et multisplitt til binære splitt.
+					\item Hvordan splitte kontinuerlige attributter?
+				\end{enumerate}
+			\item Forklar hvordan man velger den beste splittmetoden.
+				\begin{enumerate}
+					\item Forklar hvordan dette kan bli gjort vha GINI-metoden
+					\item Forklar hvordan dette kan bli gjort vha Entropy-metoden
+					\item Forklar hvordan dette kan bli gjort vha klassifiseringsfeil (classificatio error)
+				\end{enumerate}
+			\item Forklar når man stopper splittingen
+			\item Hva menes med "underfitting" og "overfitting"?
+				\begin{enumerate}
+					\item Hva er årsaken til disse?
+					\item Hvordan håndteres disse?
+				\end{enumerate}
+			\item Vis hvordan et nytt inslag kan få sin klasse
+			\item Hvordan evalueres klassifiseringsmetoder?
+		\end{enumerate}
+
+	\section{Classification - part 2}
+
+		\begin{enumerate}
+			\item Hva menes med instansbasert klasifisering? Hvordan skiller dette seg fra 
+			beslutningstre basert klassifisering?
+			\item Hva er "Rote-learner"-klassifisering?
+			\item Hva er "Nearest Neighbour"-klassifisering (kNN)?
+				\begin{enumerate}
+					\item Illustrer vha eksempel hvordan ideen bak dette
+					\item Hvorfor trenger vi avstandsmål for å kunne bruke kNN?
+					\item Hva er vektfaktor for kNN og når trenger vi å bruke det?
+				\end{enumerate}
+			\item Hva skjer i kNN når man bruker for liten k? For stor k?
+			\item Man må ta hensyn til skala i forhold til data når man bruker avstandsmål i kNN.
+			Hva betyr egentlig dette?
+			\item Illustrer problemet med "Euclidiske"-avstanden
+			\item Hva menes det med at kNN er en "Lazy learner"?
+			\item Forklar prinsippet bak Bayes klassifikator (classifier)
+			\item Forklar prinsippet bak SVM
+		\end{enumerate}
+
+	\section{Assosiasjonsregler}
+		
+		\subsection*{Oppgave 1}
+
+			Finn alle assosiasjonsregler i følgende database over studentenes fagvalg.
+			Anta at minsup = 2 og minconf = 70\%.
+
+			\begin{table}[H]
+				\begin{tabular}{| l | l |}
+					\hline
+					{\bf SID} & {\bf Fag} \\ \hline
+					1 & Matte, Fysikk, Kjemi \\ \hline
+					2 & Fysikk, Kjemi, Norsk, Engelsk \\ \hline
+					3 & Kjemi, Norsk \\ \hline
+					4 & Matte, Fysikk, Norsk \\ \hline
+					5 & Matte, Fysikk, Kjemi \\ \hline
+				\end{tabular}
+			\end{table}
+
+		\subsection*{Oppgave 2}
+
+			Hvordan ville du implementere kandidatementsettgenerering (what?) for:
+
+			F2 = {{A, B}, {A,C} {B, C}, {B,D}} $\Rightarrow$ C3 = \{\{A, B, C\}\}
+
+		\subsection*{Oppgave 3}
+
+			\begin{enumerate}
+				\item Lag et FPTree av følgende transaksjoner
+				\item Gjør det samme, men nå uten sortering
+			\end{enumerate}
+
+			\begin{table}[H]
+				\begin{tabular}{| l | l | }
+					\hline
+					1 & A, B, C, D, E \\ \hline
+					2 & B, C, D, F \\ \hline
+					3 & A, C, D, G \\ \hline
+					4 & B, C, F \\ \hline
+					5 & D, E, G, H, I \\ \hline
+				\end{tabular}
+			\end{table}
+
+		\subsection*{Oppgave 4}
+			Anta handlekurvdata nederst. Bruk apriori-algoritmen for å finne frekvente elementsett,
+			git at minimum støtte er 22 \% (dvs. minimum support count er 2).
+
+			\begin{table}[H]
+				\begin{tabular}{| l | l | }
+					\hline
+						{\bf TID} & {\bf Kjøpte produkt} \\ \hline
+						T100 & L1, L2, L5 \\ \hline
+						T200 & L2, L4 \\ \hline
+						T300 & L2, L3 \\ \hline
+						T400 & L1, L2, L4 \\ \hline
+						T500 & L1, L3 \\ \hline
+						T600 & L2, L3 \\ \hline
+						T700 & L1, L3 \\ \hline
+						T800 & L1, L2, L3, L5 \\ \hline
+						T900 & L1, L2, L3 \\ \hline
+				\end{tabular}
+			\end{table}
