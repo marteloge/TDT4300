@@ -436,6 +436,85 @@
 			{\bf Drill-through} operations uses relational SQL facilities to drill
 			through the bottom level of a cube down to its back-end relational tables. 
 
-	\begin{figure}[H]	
-		\includegraphics[width=\textwidth]{pics/operations.png}
-	\end{figure}
+		\begin{figure}[H]	
+			\includegraphics[width=\textwidth]{pics/operations.png}
+		\end{figure}
+
+\clearpage
+\section{Data Warehouse Design and Usage}
+
+	\subsection{Framework for Data Warehouse design}
+
+		To design an effective data warehouse we need to understand and analyze
+		business needs and construct  a business analysis framework. The construction
+		of a large and complex building, for which the owner, architect, and builder
+		have different views. These views are combined to form a complex framework 
+		that represent top-down, business-driven, or owner's perspective, as 
+		well as bottom-up, builder-driven, or implementor's view of the information system.
+
+		Here are four different views regarding a data warehouse design:
+
+		\begin{itemize}
+			\item {\bf Top-down view} allows the selection of the relevant information
+			necessary for the data warehouse. This information match current and 
+			future business needs. 
+			\item {\bf Data source point} exposes the information being captured, stored,
+			and managed by operational systems. 
+			\item {\bf Data warehouse view} includes fact tables and dimension tables. 
+			\item {\bf Business query view} is the data perspective in the data warehouse
+			from the end-user's viewpoint. 
+		\end{itemize}
+
+	\subsection{Data Warehouse Design Process}
+
+		A data warehouse can be built using a top-down approach, a bottom-up approach,
+		or a combination of both. 
+		The {\bf top-down approach} starts with overall design and planning.
+		It is useful in cases where the technology is mature and well known, and
+		where the business problems that must be solved are clear and well understood.
+		The {\bf bottom-up approach} starts with experiments and prototypes. 
+		This is useful in the early stage of business modeling and technology development. 
+
+		In general, the warehouse design process consists of the following steps:
+		\begin{itemize}
+			\item Choose a business process to model
+			\item Chosse the business process gain
+			\item Choose the dimensions that will apply to each fact table record
+			\item Choose the measures that will populate each fact table record
+		\end{itemize}
+
+	\subsection{Data Warehouse Applications}
+
+		There are three kind of data warehouse applications:
+		\begin{itemize}
+			\item {\bf Information processing:} supports querying, basic statistical analysis,
+			and reporting using crosstabs, tables, charts or graphs.
+			\item {\bf Analytical processing:} supports basic OLAP operations.
+			\item {\bf Data mining:} supports knowledge discovery by finding hidden patterns
+			and associations, constructing analytical models, performing classification 
+			and prediction, and presenting the mining results using visualiization tools. 
+		\end{itemize}
+
+	\subsection{From OLAP to Multidimensional Data Mining}
+
+		{\bf Multidimensional data mining} (also known as exploratory multidimensional data mining,
+		{\bf online analytical mining (OLAM)}) integrates OLAP with data mining to 
+		uncover knowledge in multidimensional databases. 
+
+		Most data mining tools need to work on integrated, consistent, and cleaned data, which
+		require costly data cleaning, data integration, and data transformation as
+		{\bf preprocessing steps}. A data warehouse contains {\bf high quality (clean) data} that is ready
+		to use for data mining, and there is no need for costly data cleaning in a 
+		preprocessing step!
+
+		Data warehoyse have an {\bf infrastructure} which connects different sources. It
+		is prudent to make the best use of the available infrastructures rather than constructing
+		everything from scratch. 
+
+		Effective data mining need exploratory data analysis. A user will often want to traverse
+		through a database, select portions of relevant data, analyze them, and present
+		knowledge/results in different forms. This is a build in feature in data warehouse
+		with OLAP operations as well as the visualisation possibilities of multidimensional data.
+
+		
+
