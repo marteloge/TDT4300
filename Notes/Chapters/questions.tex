@@ -1,6 +1,6 @@
 \chapter{Questions From the Lectures}
 
-	\section{Introduction}
+	\section{Forelesning 1}
 		\begin{enumerate}
 			\item Hva er datagruvedrift ("data mining")? Nevn eksempler på hva data mining er
 			og hva det ikke er. 
@@ -13,61 +13,65 @@
 			\item Forklar hvorfor vi trenger data cleaning og data integration..
 		\end{enumerate}
 
-	\section{Classification - part 2}
+	
+
+	\section{Forelesning 2? Decision tree}
+
+		Dr. Ola har en pasient som er veldig syk. Uten behandling vil han anslå at pasienten vil dø i løpet
+		av tre måneder. Det eneste alternativet han har er en operasjon som er svært risikofull. Han vil klare
+		å forlenge levetiden hans med ett år dersom operasjonen går bra. Det er imidlertid 30\% sjanse
+		fir at han ikke vil overleve operasjonen. 
 
 		\begin{enumerate}
-			\item Hva er hovedhensiktene med klassifisering?
-				\begin{enumerate}
-					\item Gi eksempler for når klassifiseringen er nyttig (anvendelsesområde).
-					\item Hvorfor trenger vi treningsdata til klassifiseringen?
-				\end{enumerate}
-			\item Hvilke klassifiseringsteknikker finnes det?
-			\item Beslutningstre (Decision tree) er et eksempel på kassifiseringsmetode.
-			Forklar hvordan denne metoden fungerer.
-			\item Hvordan fungerer Hunt's algoritmen?
-				\begin{enumerate}
-					\item Forklar spesielt hvordan split utføres
-					\item Vis hvordan man kan gjøre et multisplitt til binære splitt.
-					\item Hvordan splitte kontinuerlige attributter?
-				\end{enumerate}
-			\item Forklar hvordan man velger den beste splittmetoden.
-				\begin{enumerate}
-					\item Forklar hvordan dette kan bli gjort vha GINI-metoden
-					\item Forklar hvordan dette kan bli gjort vha Entropy-metoden
-					\item Forklar hvordan dette kan bli gjort vha klassifiseringsfeil (classificatio error)
-				\end{enumerate}
-			\item Forklar når man stopper splittingen
-			\item Hva menes med "underfitting" og "overfitting"?
-				\begin{enumerate}
-					\item Hva er årsaken til disse?
-					\item Hvordan håndteres disse?
-				\end{enumerate}
-			\item Vis hvordan et nytt inslag kan få sin klasse
-			\item Hvordan evalueres klassifiseringsmetoder?
+			\item Tegn et decision tree for dette problemet. Vi sannsynlighetene for alle alternative
+			utganger.
+			\item Dr. Ola har underveis funnet ut at det finnes en mindre risikofull test så kan
+			gjennomføres uten at pasienten nødvendigvis må dø. Denne testen vil da kunne anslå om pasienten
+			vil overleve operasjonen eller kan dø uansett. DVS. Hvis testen er positiv øker sjansen for å 
+			overleve operasjonen. Testen har følgende karakteristikker:
+			 	\begin{enumerate}
+			 		\item True-positiv (T) rate: sannsynligheten for testen vil være positiv dersom
+			 		pasienten vil overleve operasjonen er 90\%.
+			 		\item False-Positiv (F) rate: sannsynligheten for testen vil være positiv dersom pasienten
+			 		ikke vil overleve operasjonen er 10\%. 
+			 	\end{enumerate}
+			Hva vil sannsynligheten fo rat pasienten vil overleve operasjonen dersom testen er positiv?
+			\item Det viser seg likevel at testen vil kunne føre til fatale komplikasjoner. Dvs pasienten
+			kan dø under testingen som for eksempel følge av allergiske reaksjoner, el.
+
+			Tegn et nytt decision tree for å vise alternativene og konsekvensene for Dr. Olas problem.
 		\end{enumerate}
 
-	\section{Classification - part 2}
+	\section{Forelesning 3}
 
 		\begin{enumerate}
-			\item Hva menes med instansbasert klasifisering? Hvordan skiller dette seg fra 
-			beslutningstre basert klassifisering?
-			\item Hva er "Rote-learner"-klassifisering?
-			\item Hva er "Nearest Neighbour"-klassifisering (kNN)?
+			\item Forklar hvilke typer attributter det er
 				\begin{enumerate}
-					\item Illustrer vha eksempel hvordan ideen bak dette
-					\item Hvorfor trenger vi avstandsmål for å kunne bruke kNN?
-					\item Hva er vektfaktor for kNN og når trenger vi å bruke det?
+					\item Hva er forskjellen på attributt og datatype
+					\item Gi eksempler på kontinuerlige, discrete, og asymmetriske attributter.
 				\end{enumerate}
-			\item Hva skjer i kNN når man bruker for liten k? For stor k?
-			\item Man må ta hensyn til skala i forhold til data når man bruker avstandsmål i kNN.
-			Hva betyr egentlig dette?
-			\item Illustrer problemet med "Euclidiske"-avstanden
-			\item Hva menes det med at kNN er en "Lazy learner"?
-			\item Forklar prinsippet bak Bayes klassifikator (classifier)
-			\item Forklar prinsippet bak SVM
+			\item Hvorfor kan dimensjonalitet være et problem i data mining?
+			\item Forklar hvordan dokumenter med teksinnhold kan gjøres om til numeriske data for 
+			data mining.
+			\item Hva menes med ordnede data? Gi eksempler.
+			\item Hvorfor er datakvalitet viktig å håndtere? Gi eksempler på problemer som kan 
+			oppstå 
+				\begin{enumerate}
+					\item Hva menes med outliners?
+					\item Hvorfor kan outliners være et potensielt problem?
+				\end{enumerate}
+			\item Hvordan håndteres det dersom vi mangler noen verdier i  dataene våre?
+			Forklar alternativene.
+			\item Hvordan håndteres det dersom vi har duplikater i dataene våre? Forklar alternative løsninger.
+			\item Forklar datapreprosseseringsteknikker som går an å bruke.
+			\item Når brukes likhet og ulikhetsmål i data mining?
+				\begin{enumerate}
+					\item Hvilke mål har vi for disse?
+					\item Gi eksempler.
+				\end{enumerate}
 		\end{enumerate}
 
-	\section{Assosiasjonsregler}
+	\section{Forelesning 4}
 		
 		\subsection*{Oppgave 1}
 
@@ -129,3 +133,160 @@
 						T900 & L1, L2, L3 \\ \hline
 				\end{tabular}
 			\end{table}
+
+	\section{Forelesning 5}
+		\begin{enumerate}
+			\item Illustrer hvordan assosiasjonsregler (AR) ser ut.
+
+			Hvilke anvendelsesområde brukes AR ?
+
+			Hva er hovedhensiktene med AR?
+
+			\item Hvorfor kan binærrepresentasjon av handlekurv være nyttig? Begrunn svaret.
+			\item Forklar begrepene: elementsett (item set), støtteantall (support count),
+			støtte (support), frekvent elementsett (frequent itemset), og konfidens (confidence).
+			\item Forklar hvordan man formelt kan beregne og estimere støtte (s) og konfidens (c)
+			dersom man har regelen X $\rightarrow$ Y.
+			\item Forklar hva som menes med assosiasjonsregeloppdagelse og hvordan finner man den?
+
+				\begin{enumerate}
+					\item Hva er største problemet med "brute-force" metoden for
+					assosiasjonsregeloppdagelse?
+					\item Forklar et alternativ til Brute-Force.
+				\end{enumerate}
+
+			\item Forklar strategier for mer effektive regeloppdagelse.
+				\begin{enumerate}
+					\item Hva menes med pruning?
+				\end{enumerate}
+			\item Hva er Apriori-prinsippet? Hva er anti-monotonegenskap til support? 
+			Hva er apriori-prinsippet godt for?
+			\item Forklar hvordan apriori-algoritmen fungerer.
+			\item Illustrer/Forklar hvordan man genererer kandidater for AR og pruning. 
+		\end{enumerate}
+
+	\section{Forelesning 6 - Classification part 1}
+
+		\begin{enumerate}
+			\item Hva er hovedhensiktene med klassifisering?
+				\begin{enumerate}
+					\item Gi eksempler for når klassifiseringen er nyttig (anvendelsesområde).
+					\item Hvorfor trenger vi treningsdata til klassifiseringen?
+				\end{enumerate}
+			\item Hvilke klassifiseringsteknikker finnes det?
+			\item Beslutningstre (Decision tree) er et eksempel på kassifiseringsmetode.
+			Forklar hvordan denne metoden fungerer.
+			\item Hvordan fungerer Hunt's algoritmen?
+				\begin{enumerate}
+					\item Forklar spesielt hvordan split utføres
+					\item Vis hvordan man kan gjøre et multisplitt til binære splitt.
+					\item Hvordan splitte kontinuerlige attributter?
+				\end{enumerate}
+			\item Forklar hvordan man velger den beste splittmetoden.
+				\begin{enumerate}
+					\item Forklar hvordan dette kan bli gjort vha GINI-metoden
+					\item Forklar hvordan dette kan bli gjort vha Entropy-metoden
+					\item Forklar hvordan dette kan bli gjort vha klassifiseringsfeil (classificatio error)
+				\end{enumerate}
+			\item Forklar når man stopper splittingen
+			\item Hva menes med "underfitting" og "overfitting"?
+				\begin{enumerate}
+					\item Hva er årsaken til disse?
+					\item Hvordan håndteres disse?
+				\end{enumerate}
+			\item Vis hvordan et nytt inslag kan få sin klasse
+			\item Hvordan evalueres klassifiseringsmetoder?
+		\end{enumerate}
+
+	\section{Forelesning 7 - Classification part 2}
+
+		\begin{enumerate}
+			\item Hva menes med instansbasert klasifisering? Hvordan skiller dette seg fra 
+			beslutningstre basert klassifisering?
+			\item Hva er "Rote-learner"-klassifisering?
+			\item Hva er "Nearest Neighbour"-klassifisering (kNN)?
+				\begin{enumerate}
+					\item Illustrer vha eksempel hvordan ideen bak dette
+					\item Hvorfor trenger vi avstandsmål for å kunne bruke kNN?
+					\item Hva er vektfaktor for kNN og når trenger vi å bruke det?
+				\end{enumerate}
+			\item Hva skjer i kNN når man bruker for liten k? For stor k?
+			\item Man må ta hensyn til skala i forhold til data når man bruker avstandsmål i kNN.
+			Hva betyr egentlig dette?
+			\item Illustrer problemet med "Euclidiske"-avstanden
+			\item Hva menes det med at kNN er en "Lazy learner"?
+			\item Forklar prinsippet bak Bayes klassifikator (classifier)
+			\item Forklar prinsippet bak SVM
+		\end{enumerate}
+
+	\section{Forelesning 8}
+
+		\begin{enumerate}
+			\item Hva er klynging? Hvordan er klynging forskjellig fra klassifisering? Nevn minst tre 
+			eksemper for når klynging e rnyttig.
+			\item Nevn tre representative algoritmer for klynging.
+			\item Det er to hovedkategorier for klynging. Nevn disse og forklar hovedforskjellene. 
+				\begin{itemize}
+					\item Er det andre særpreg for klyngesett?
+					\item Nevn fire klyngekarakteristikker? Forklar. 
+				\end{itemize}
+			\item Forklar hvordan K-means klyngingalgorimen fungerer.
+				\begin{itemize}
+					\item Hvorfor kan resultatklynger for et samme datasett bli forskjellige?
+					\item Hvilke type avstandsmål kan brukes med k-means?
+					\item Hva er kompleksiteten for k-means? Forklar 
+				\end{itemize}
+			\item Forklar hvordan klynging med k-means evalueres?
+				\begin{itemize}
+					\item Hva betyr det at klynging er optimal? sub optimal? 
+				\end{itemize}
+			\item Kan man bruke SSE til å vite verdien av k? 
+			\item Har valg av initielle sentroider noe å si på kvaliteten på klynging? Begtunn svaret ditt. 
+			\item Det at vi er nødt til å velge initielle sentroider gjør at vi ofte får dårlige resultat. 
+			Hva kan man gjøre for å begrense problemene med dette?
+			\item Hva menes med biscting k-means?
+			\item Forklar prinsippet bak bisecting k-means. 
+			\item Hva kan man gjøre med pre-postprosessering for k-means? Forklar. 
+			\item Hvilke andre svakheter er det med k-means?
+			\item Forklar hovedprinsippet bak hierarkisk klynging. Hva menes med at hierarkise klynging 
+			kan visualiseres som dendrogram? 
+			\item Forklar hvilke fordeler og ulemper er det med hierarkiskklynging
+			\item Forklar to hovedtyper innenfor hierarkiskklynging
+		\end{enumerate}
+
+	\section{Forelesning 9}
+
+		\begin{enumerate}
+			\item Drøft kostnadene med hierarkisk klynging
+			\item Forklar hvordan tekst kan klynges?
+				\begin{enumerate}
+					\item Kan k-means brukes? Kan HAC brukes?
+					\item Hvilke avstansmål egne seg her?
+					\item Hva enes med ICT? TF-ICF?
+				\end{enumerate}
+			\item Hvordan fungerer tetthestbaserte klynging?
+				\begin{enumerate}
+					\item Hvilke parametre må man beregne?
+					\item Hva menes med kjernepunkt? Grensepunkt? Støypunkt? Bruk figur i forklaringen.
+				\end{enumerate}
+			\item Hva skjer når DBSCAN fungerer bra?
+			\item Når fungerer DBSCAN ikke så bra?
+			\item Hvordan påvirker valg av parametrene Eps og MinPts kvaliteten på DBSCAN
+			klyngingen?
+			\item Illustrer hvordan man velger passende verdier for Eps og MinPts
+			\item Gitt DBSCAN-klynging, hvordan velges verdien av k?
+			\item Hvorfan evalueres klynging?
+				\begin{enumerate}
+					\item Hva er utfordringen med klyngeevaluering?
+					\item Hva er hensikten med klyngeevaluering?
+				\end{enumerate}
+			\item Hvilke aspekter må vi ta hensyn til i forhold til klyngevaliditet?
+			\item Hvilke mål brukes til klyngevaliditet?
+				\begin{enumerate}
+					\item Hva er ekstern indeks?
+					\item Hva er intern indeks?
+					\item Hva er relativ indeks?
+				\end{enumerate}
+			\item Hva er silhuettoffisient?
+			\item Forklar hvordan klyngevalidetet måle gjennom korrelasjon
+		\end{enumerate}
