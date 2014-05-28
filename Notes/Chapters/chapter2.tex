@@ -1,8 +1,22 @@
 \chapter{Data}
+		
+	\begin{itemize}
+		\item {\bf What is Data?} 
+		\item {\bf Types of Attributes} (data set, data object, attribute, measurement scale)
+		\item {\bf Types of data} (nominal, ordinal, ratio, interval)
+		\item {\bf Discrete, Continuous, and Asymmetric attributes}
+		\item {\bf Characteristics of data set} (Dimensionality, Sparsity, Resolution)
+		\item {\bf Type of data sets} (post, graph, ordered)
+		\item {\bf Data quality}
+		\item {\bf Data preprocessing} (aggregation, sampling, dimensionality reduction, 
+		feature subset selection, feature creation, discretization and binarization, variable transformation)
+		\item {\bf Similarity and dissimilarity}
+	\end{itemize}
 \clearpage
 
-\section{Types of Data}
-	{\bf What is data?:} a collection of data objects and is attributes. Attributes
+\section{What is Data?}
+
+	A collection of data objects and is attributes. Attributes
 	is the properties of an object. A collection of attributes describes a object. 
 
 	\begin{itemize}
@@ -21,7 +35,7 @@
 		{\bf type of a measurement scale}.
 	\end{itemize}
 
-	\subsection{Types of Attributes}
+\section{Types of Attributes}
 	{\bf Categorical types (Qualitative):} Nominal and Ordinal
 
 	{\bf Numeric types (Quantitative):} Interval and Ratio
@@ -63,8 +77,9 @@
 				\item {\bf Dimensionality:} is the number of attributes that the object in the 
 				class set possess.
 				\item {\bf Sparsity:} for some data sets, such as asymmetric features, most
-				attributes of an object have values of 0. In practical terms, sparsity is an advantage
-				because usually only the non-zero values need to be stored an manipulated. 
+				attributes of an object have values of 0. Sparsity corresponds to data which are loosely coupled.
+				A variable with sparse data is one in which a relatively high percentage of the variable's 
+				cells do not contain actual data.
 				\item {\bf Resolution:} it is frequently possible to obtain data at different levels of
 				resolution, and often the properties of the data are different at different resoultions.
 				F.eks the surface of the Earth seems very uneven at a resolution of a few meters, but is *
@@ -117,7 +132,7 @@
 				\item {\bf Data with Relationships among Objects:} the relationships among objects frequently convey important information. In such cases, the data is often represented as a graph. In 
 				particular, the data objects are mapped to nodes of the graph, while the relationships among
 				objects are captured by the links between objects and link propeties. 
-				\item {\bf Data with Objects Thar Are Graphs:} if objects have structure, that is, the objects
+				\item {\bf Data with Objects That Are Graphs:} if objects have structure, that is, the objects
 				contain subobjects that have relationships, then such objects are frequently represented as graphs.
 			\end{itemize}
 
@@ -166,13 +181,13 @@
 
 \section{Data Quality}
 	
-	{\bf Data mining focuses on:}
+	\subsection*{Data mining focuses on:}
 	\begin{enumerate}
 		\item The detection and correction of data quality problems (data cleaning).
 		\item The use of algorithms that can tolarate poor data quality
 	\end{enumerate}
 
-	{\bf Measurement error:}
+	\subsection*{Measurement error:}
 		\begin{itemize}
 			\item {\bf Noise}
 			\item {\bf Artifacts:} data errors may be the result of a more deterministic
@@ -185,7 +200,7 @@
 			of quantity being measured.
 		\end{itemize}
 
-	{\bf Data collection problems:}
+	\subsection*{Data collection problems:}
 		\begin{itemize}
 			\item {\bf Outliners:} Outliners are either (1) data objects that, in some
 			sense, have characteristics that are different from most of the other data
@@ -206,7 +221,7 @@
 			acyually represent a single object. 
 		\end{itemize}
 
-	{\bf Issues Related to Applications}
+	\subsection*{Issues Related to Applications}
 		\begin{itemize}
 			\item {\bf Timeliness:} some data starts to age as soon as it had been 
 			collected. If the data is out of date, then so are the models and patterns
@@ -218,7 +233,7 @@
 			measurement (e.g., meters or feet for length), and the origin of the data.
 		\end{itemize}
 
-		\vspace{1cm}
+		\vspace{0.5cm}
 
 		{\LARGE "...data is of high quality if it is suitable for its intended use"}
 
@@ -245,6 +260,12 @@
 			An a store example aggregating over monthhs loses information about which day of the
 			week has the highest sales. 
 		\end{itemize}
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.3]{pics/aggregation.png}
+			\caption{Aggregation: combining object A and B into object C}
+		\end{figure}
 
 	\subsection{Sampling}
 		\begin{itemize}
@@ -293,6 +314,12 @@
 				\end{itemize}			
 		\end{itemize}
 
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.3]{pics/sampling.png}
+			\caption{Sampling: selecting a subset of the data}
+		\end{figure}
+
 	\subsection{Dimensionality reduction}
 		\begin{itemize}
 			\item {\bf Discretization} is a process that transforms quantitative data into qualitative data
@@ -332,7 +359,6 @@
 				\end{itemize}
 		\end{itemize}
 
-	\clearpage
 	\subsection{Feature subset selection}
 		\begin{itemize}
 			\item A way to reduce the dimensionality is to use only a subset of the 
@@ -391,6 +417,12 @@
 			to reduce the number of categories by combining some of the values. 
 		\end{itemize}
 
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.25]{pics/discretization.png}
+			\caption{Discretization: Transforms the income (continuous) into a categorical attribute.}
+		\end{figure}
+
 	\subsection{Variable transformation}
 		\begin{itemize}
 			\item A {\bf variable transformation} refers to a transformation that is applied to
@@ -438,23 +470,27 @@
 			\includegraphics[width=\textwidth]{pics/simpleAttribute.png}
 		\end{figure}
 
-	
 	\subsection{Dissimilarities between Data Objects}
 
-	{\bf Euclidean distance:} The euclidean distance, d, between two points, x and y,
+	\subsection*{Euclidean distance} 
+
+	The euclidean distance, d, between two points, x and y,
 	in one-, two-, three-, or higher dimensional space, is given by the following formula:
 
-		$d(x,y) = \sqrt{\sum_{k=1}^{n} (x_k - y_k)^{2}}$
+		\begin{equation}
+		d(x,y) = \sqrt{\sum_{k=1}^{n} (x_k - y_k)^{2}}
+		\end{equation}
 	
 
-	where n is the number of dimensions, and xk and yk are repsectively the k'th attibutes
+	where n is the number of dimensions, and $x_{k}$ and $y_{k}$ are repsectively the k'th attibutes
 	of x and y. 
 
-	\clearpage
-	{\bf Minkowski distances:}
 
+	\subsection*{Minkowski distances}
 
-		$d(x,y) = \left(\sum_{k=1}^{n} |x_k - y_k|^{r}\right) ^{1/r}$
+		\begin{equation}
+			d(x,y) = \left(\sum_{k=1}^{n} |x_k - y_k|^{r}\right) ^{1/r}
+		\end{equation}
 
 	\begin{itemize}
 		\item {\bf r = 1} City block (Manhattan, txicab, $L_{1}$ norm) distance.
@@ -549,36 +585,42 @@
 	{\bf Simple Matching Coefficient (SMC)} one commonly used similarity coefficient, 
 	which is defined as: \\
 
-		SMC = $\frac{number of matching attribute values}{number of attributes}$ = 
-		$\frac{f_{11} + f_{00}}{f_{01} + f_{10} + f_{11} + f_{00}}$
-		\\
+		\begin{equation}
+		SMC = \frac{number\;of\;matching\;attribute\;values}{number\;of\;attributes} = 
+		\frac{f_{11} + f_{00}}{f_{01} + f_{10} + f_{11} + f_{00}}
+		\end{equation}
 
 
 	{\bf Jaccard Coefficient} is frequently used to handle objects consisting of 
 	asymmetric binary attributes. The Jaccard coefficient, which is often symolized by J, 
 	is given by the following equation: \\
 
-		$J = \frac{number of matching presences}{number of attibutes not involved in 00 matches} =
-		\frac{f_{11}}{f_{01} + f_{10} + f_{11}}$
-		\\
+		\begin{equation}
+			J = \frac{number\;of\;matching\;presences}{number\;of\;attibutes\;not\;involved\;in\;00\;matches} =
+			\frac{f_{11}}{f_{01} + f_{10} + f_{11}}
+		\end{equation}
 
 	{\bf Cosine Similarity} \\ 
 
-		cos(x,y) = $\frac{x*y}{\|x\| \|y\|}$
-		\\
+		\begin{equation}
+		cos(x,y) = \frac{x*y}{\|x\| \|y\|} = \frac{\sum x_{i}*y_{i}}{\sqrt{\sum(x_{i})^2} * \sqrt{\sum(y_{i})^{2}}}
+		\end{equation}
 
 	{\bf Extended Jaccard Coefficient} \\
 
-		EJ(x,y) = $\frac{x*y}{\|x\|^{2} + \|y\|^{2} - x*y}$
-		\\
+		\begin{equation}
+			EJ(x,y) = \frac{x*y}{\|x\|^{2} + \|y\|^{2} - x*y}
+		\end{equation}
 
 	{\bf Correlation} between two data objects that have binary or continuous variables is a
 	measure of the linear relationship between the attributes of the objects. 
 	{\bf Pearson's correlation} coefficient between two data objects, x and y, is defined
 	by the following equation: \\
 
-		corr(x,y) = $\frac{covariance(x,y)}{standardDeviation(x)*standardDeviation(Y)}$ = 
-		$\frac{s_{xy}}{s_{x}s_{y}}$
+		\begin{equation}
+		corr(x,y) = \frac{covariance(x,y)}{standard\;deviation(x)*standard\;deviation(Y)} = 
+		\frac{s_{xy}}{s_{x}s_{y}}
+		\end{equation}
 
 
 	
