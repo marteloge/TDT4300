@@ -3,7 +3,7 @@
 
 \section{What Is Data Mining?}
 	
-	{\bf Data mining:} is the process of automatically discovering useful information
+	\subsection*{Data mining} is the process of automatically discovering useful information
 	in large data repositories. Data mining techniques are deployed to scour large 
 	databases in order to find novel and useful {\bf patterns} that might otherwise remain 
 	unknown. They also predict capabilities to {\bf predict} the outcome of a future 
@@ -19,23 +19,25 @@
 	\end{tabular}
 	\end{table}	
 
-	{\bf Data mining vs. Datawarehouse:} Unknown vs. unknown information. 
+	\subsection*{Data mining vs. Data warehouse} Unknown vs. unknown information. 
 	In data mining we are looking for unknown information (knowledge discovery) in known data. 
 	In datawarehouse we are looking at known information. 
 
-	{\bf Knowledge Discovery in Databases (KDD): } is the overall process of converting raw 
+	\subsection*{Knowledge Discovery in Databases (KDD)} is the overall process of converting raw 
 	data into useful information. 
 
 	The process of knowledge discovery in databases (from the book):
 	\begin{enumerate}
 		\item {\bf Preprocessing:} the input data can be stored in a varity of formats (flat files, spreadsheets, relational tables,etc). The purpose of preprocessing is to transform the input data into an appropriate format for the subsequent analysis. The steps involved in data preprocessing include fusing data from multiple sources, cleaning data to remove noise and duplicate observations, and selecting records and features that are relevant to the data mining task at hand. 
-		\item {\bf Data Mining}
-		\item {\bf Postprocessing}
+		\item {\bf Data Mining:} running algorithms, and find patterns and unknown data.
+		\item {\bf Postprocessing:} Filtering patterns, visualization of results, and pattern interpretation. 
 	\end{enumerate}
 
 		\begin{figure}[H]
 			\includegraphics[width=\textwidth]{pics/KDD.png}
+			\caption{Knowledge Discovery Process}
 		\end{figure}
+
 
 	\clearpage
 	%http://dataminingwarehousing.blogspot.no/2008/10/data-mining-steps-of-data-mining.html
@@ -44,11 +46,11 @@
 	\begin{enumerate}
 		\item {\bf Data Integration:} First of all the data are collected and integrated from all the 
 		different sources.
-		\item {\bf Data Selection:} We may not all the data we have collected in the first step. So in this 
+		\item {\bf Data Selection:} We may not need all the data we have collected in the first step. So in this 
 		step we select only those data which we think useful for data mining.
 		\item {\bf Data Cleaning:} The data we have collected are not clean and may contain errors, missing values,
 		noisy or inconsistent data. So we need to apply different techniques to get rid of such anomalies.
-		\item {\bf Data Transformation:} The data even after cleaning are not ready for mining as we need to 
+		\item {\bf Data Transformation:} The data, even after cleaning, are not ready for mining as we need to 
 		transform them into forms appropriate for mining. The techniques used to accomplish this are smoothing,
 		aggregation, normalization etc.
 		\item {\bf Data Mining:} Now we are ready to apply data mining techniques on the data to discover the 
@@ -89,16 +91,16 @@
 	{\bf Data mining tasks are generally divided into:}
 
 	\begin{itemize}
-		\item {\bf Descriptive tasks:} The objective of these tasks is to predict 
+		\item {\bf Descriptive tasks:} Here, the objective is to derive patterns 
+		(correlations, trends, custers, trajectories, and anomalies) that summarize the undelying relationships in data. Descriptive data mining tasks are often exploratory in nature 
+		and frequently require postprocessing tecniques to validate and explain the results. 
+		{\bf Examples:} {\color{blue} Clustering, association rules and sequence patterns.}
+		\item {\bf Predictive tasks:}  The objective of these tasks is to predict 
 		the value of a particular attribute based on the values of other attributes. 
 		The attribute to be predicted is commonly known as the {\bf target} or 
 		{\bf dependent variable}, while the attributes used for making the prediction are 
 		known as the {\bf explanatoy} or {\bf independent variables}. 
 		{\bf Examples: }{\color{blue} Classification, regression, anomalies detection} 
-		\item {\bf Predictive tasks:} Here, the objective is to derive patterns 
-		(correlations, trends, custers, trajectories, and anomalies) that summarize the undelying relationships in data. Descriptive data mining tasks are often exploratory in nature 
-		and frequently require postprocessing tecniques to validate and explain the results. 
-		{\bf Examples:} {\color{blue}Clustering, association rules and sequence patterns.}
 	\end{itemize}
 
 	{\bf The core data mining tasks:}
