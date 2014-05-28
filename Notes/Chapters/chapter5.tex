@@ -11,15 +11,26 @@
 		one of the training exactly
 	\end{itemize}
 
-	In this section we will capture these algorithms: 
+	{\bf In this chapter we will capture these algorithms:} 
 	\begin{itemize}
 		\item Instance-based learning: k-NN
 		\item Probabilistic learning: Naive Bayes
 		\item Statistical learning: Support Vector Machines (SVM)
 	\end{itemize}
 
+	{\bf Short outline of the chapter:}
 
-	
+		\begin{itemize}
+			\item Rote-learner
+			\item Nearest-neighbor classifier
+			\item Naive Bayes Classifier
+			\item Estimating Conditional Probabilities for Continuous Attributes
+			\item Problems with naive bayes
+			\item Characteristics of Naive Bayes Classifiers
+			\item Bayes Error Rate
+			\item Support Vector Machine (SVM)
+		\end{itemize}
+
 	\clearpage
 	\section{Nearest-Neighbor Classifiers}
 
@@ -60,14 +71,14 @@
 			\caption{1-nearest neighbor, 2-nearest neighbor and 3-nearest neighbor}
 		\end{figure}
 
-		You need to carefully pick the k because if its too small it can be close to noise
-		so the classification is wrong. If the k is too big, it might happend that it
+		You need to {\bf carefully pick the k} because if its {\bf too small} it can be close to noise
+		so the classification is wrong. If the k is {\bf too big}, it might happend that it
 		will misclassify the test instance becuase its list of nearest neighbors may include
 		data points that are located far away from its neighborhood.
 
 		\clearpage
 		\section{How to do the nearest-neighbor classifier}
-		{\bf The nearest-Neighbor Classifier algorithm needs:}
+		{\bf The nearest-neighbor classifier algorithm needs:}
 			\begin{itemize}
 				\item The set of stored records 
 				\item Distance Metric to compute 
@@ -84,7 +95,7 @@
 
 		{\bf Calculate the distance between two points usin the Euclidean distance:}
 		\begin{equation}
-			Euclidean distance = d(p,q) = \sum_{i}^{} \sqrt{(p_{i} - q_{i})^{2}}
+			Euclidean\;distance = d(p,q) = \sum_{i}^{} \sqrt{(p_{i} - q_{i})^{2}}
 		\end{equation}
 
 		\clearpage
