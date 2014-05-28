@@ -1,13 +1,6 @@
 \chapter{Classification: Basic Concepts, Decision Trees, and Model Evaluation}
 
-	{\bf Classification} is the task of assigning objects to one of several
-	predefined categories, or in other words, classification is the task
-	of mapping an input attribute set x into its class label y.
-
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{pics/classification2.png}
-	\end{figure}
+	
 
 	\clearpage
 
@@ -15,17 +8,26 @@
 
 		The input data for a classification task is a collection of records.
 		Each record, also known as an instance or example, is characterized
-		by a tuple ({\bf x}, y), where {\bf x} is the attribute and set and
-		y is a special attribute called a classification class (class label).
+		by a tuple ({\bf x}, y), where {\bf x} is the {\bf attribute set} and
+		{\bf y} is a special attribute called a {\bf classification class (class label)}.
 
 		The attribute set can be descrete and continuous, but the class label
 		is always a descrete value. 
 
-		{\bf Definition classification:} classification is the task of
-		learning a taget function f that maps each attribute set {\bf x}
+		{\bf Definition 1:} classification is the task of
+		learning a {\bf taget function f} that maps each attribute set {\bf x}
 		to one of the predifined class labels y.
 
-		The target function is also known as a classification model.
+		{\bf Definition 2:} classificarion is the task of assigning objects to one of several
+		predefined categories, or in other words, classification is the task
+		of mapping an input attribute set x into its class label y.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{pics/classification2.png}
+	\end{figure}
+
+		The target function is also known as a {\bf classification model}.
 		A classification model is useful for the following purposes:
 			\begin{itemize}
 				\item {\bf Descriptive Modeling:} can use the class label that
@@ -34,6 +36,7 @@
 				used to predict the class label of unknown records. (features $\rightarrow$ class label)
 			\end{itemize}
 
+	\clearpage	
 	\section{General Approach to Solving a Classification Problem}
 
 		{\bf Learning algorithm:} identifies a model that best fits the relationships
@@ -42,13 +45,14 @@
 		support vector machines, and naive Bayes classifiers. 
 
 		{\bf Traing set:} consists of records whose class labels are known must be provided.
-		The training set is used to build a classification model, which is subsequently aapplied
+		The training set is used to build a classification model, which is subsequently applied
 		to the test set.
 
 		{\bf Test set:} consists of records with unknown class labels.
 
 		\begin{figure}[H]
 			\includegraphics[width=\textwidth]{pics/classification3.png}
+			\caption{General approach to solving classification problem}
 		\end{figure}
 
 		{\bf Confusion matrix:} evaluation of classification model is based on the coounts of
@@ -77,11 +81,11 @@
 			Error rate = \frac{Number of wrong predictions}{Total number of predictions} =
 			\frac{f_{10} + f_{01}}{f_{11} + f_{10} + f_{01} + f_{00}}
 		\end{equation}
-
+	\clearpage
 	\section{Decision Tree}
 
 		We can solve a classification problem by asking a series of carefully
-		crafted questions about the attributes of the test record. 
+		crafted {\bf questions} about the attributes of the test record. 
 		Each time we recieve an answer, a follow-up question is asked until
 		we reach a conclusion about the class label of the record. The series
 		of question and their possible answers can be organaized in the form of
@@ -104,9 +108,12 @@
 
 		There is many ways to construct a decision tree. There is many known algorithms to
 		do this: Hunt's algorithm, ID3, C4.5 and CART. 
+		Hunt's algorithm is a more general description, and ID3 is a more specific/detailed
+		version of the Hunt's algorithm (basicly the same).
 
 \clearpage
-		{\bf Hunt's algorithm:} let $D_{t}$ be the set of training records that are 
+		\subsection*{Hunt's algorithm} 
+		Let $D_{t}$ be the set of training records that are 
 		associated with node t and y = {$y_{1}, y_{2}, ...., y_{c}$} be the class labels. 
 		This is a recursive definition of Hunt's algorithm:
 		\begin{enumerate}
@@ -121,8 +128,9 @@
 
 		Hunt's algorithm will work if every combination of attribute values is present
 		in the training data and each combination has a unique class label. 
-		These assuptions are too stringent for use in most practical situations. 
-		Additional conditions are needed to handle the following cases:
+		These assuptions are too stringent for use in most practical situations.
+
+		{\bf Additional conditions are needed to handle the following cases:}
 
 		\begin{enumerate}
 			\item {\bf Empty child nodes:} in this case the node is declared a leaf
@@ -149,7 +157,7 @@
 		a multiway split (split for each value) or have a binary split by grouping
 		the values. 
 
-		{\bf Ordinal Attributes:} ordnal values can be handeled in the same way as
+		{\bf Ordinal Attributes:} ordinal values can be handeled in the same way as
 		nominal attributes, except that the values have an order. It does not make
 		sense to combine the values "small, large" and "medium, extra large". To do
 		a binary split, you would have to group feks "small, medium" and "large, extra large".
@@ -242,6 +250,7 @@
 		When entropy is used as the impurity measure in equation 4.6, the difference
 		in entropy is known as the {\bf information gain}, $\Delta_{info}$.
 
+		\subsection*{Example of calculation with Gini}
 		\begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.25]{pics/gini.png}
@@ -253,11 +262,15 @@
 		defined as follows:
 
 		\begin{equation}
-			Gain ratio = \frac{\Delta_{info}}{Split Info}
+			Gain\;ratio = \frac{\Delta_{info}}{Split\;Info}
 		\end{equation}
 
 		\begin{equation}
-			Split Info = - \sum_{i=1}^{k} P(v_{i})log_{2}P(v_{i})
+			\Delta_{info} = Information\;gain = Entropy(Parent) - Entropy(Node)
+		\end{equation}
+
+		\begin{equation}
+			Split\;Info = - \sum_{i=1}^{k} P(v_{i})log_{2}P(v_{i})
 		\end{equation}
 
 		k is the total number of splits.
@@ -281,6 +294,11 @@
 		You often get high training and error rates of the model when the size of the
 		tree is very small or the training set is too small. This situation is known 
 		as {\bf underfitting}.
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=\textwidth]{pics/fitting.png}
+		\end{figure}
 
 		{\bf Causes of overfitting:}
 		\begin{itemize}
@@ -306,6 +324,12 @@
 		replacing a subtree with (1) a new leaf node whose class label is determined
 		from the majority class of records affiliated with the subtree, or (2) the most
 		frequently used branch of the subtree. 
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=\textwidth]{pics/prepostprune.png}
+			\caption{Pre-pruning and post-pruning of decision tree}
+		\end{figure}
 
 
 	\clearpage
@@ -347,9 +371,9 @@
 
 		\subsection*{Bootstrap}
 		The methods represented so far assume that the training records are sampled
-		without replacement. As a result, there are no duplicate records in the training
+		{\bf without replacement}. As a result, there are no duplicate records in the training
 		and test sets. In the bootstrap approach, the training records are sampled 
-		with replacement;i.e., a record already chosen for training is put back into
+		{\bf with replacement};i.e., a record already chosen for training is put back into
 		the original pool or records so that it is equally likely to be redrawn. 
 		It will often be the case that a bootstrap  sample size of N contains 
 		about 63.2\% of the records in the original data. 
@@ -359,3 +383,30 @@
 		to obtain an estimate of the accuracy of the bootstrap sample, $e_{i}$.
 		Then the sampling procedure is then repeated b times to generate b bootstrap
 		samples. 
+
+		\clearpage
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.5]{pics/holdout.png}
+			\caption{Holdout Method}
+		\end{figure}
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.5]{pics/randomsubsampling.png}
+			\caption{Random Subsampling}
+		\end{figure}
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.5]{pics/kfold.png}
+			\caption{Cross-Validation}
+		\end{figure}
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.3]{pics/bootstrap.png}
+			\caption{Bootstrap}
+		\end{figure}
+
